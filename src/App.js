@@ -23,8 +23,8 @@ function App() {
             <Route path="/" element={<Login />} />
             <Route path="/main" element={<Main />} />
           </Routes>
-            <h2>테스트입니다</h2>
-            <h3>올라가라!</h3>
+          <h2>테스트입니당당</h2>
+          <h3>올라가라!</h3>
         </main>
         <hr />
       </BrowserRouter>
