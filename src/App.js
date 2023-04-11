@@ -1,23 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+
+import Login from "./components/login";
+import Main from "./components/main";
+
+import "./App.css";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+        <header>
+          <nav>
+            <h1>여기 네비바</h1>
+          </nav>
+          <Link to="/">우주주민</Link>
+        </header>
+        <hr />
+
+        <main>
+          <Routes>
+            <Route path="/login" element={<Login />} />
+            <Route path="/main" element={<Main />} />
+          </Routes>
+        </main>
+        <hr />
+      </BrowserRouter>
+
+      <footer>
+        <h1>여긴 푸터</h1>
+      </footer>
     </div>
   );
 }
