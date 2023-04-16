@@ -1,5 +1,6 @@
 import "./style.css";
 import React, { useRef } from "react";
+import menuimg from "./image/free-icon-menu-4212062.png";
 
 function ToggleMenu() {
   const toggleRef = useRef(null);
@@ -33,7 +34,7 @@ function ToggleMenu() {
         onClick={handleToggleClick}
         ref={toggleRef}
       >
-        Toggle
+        <img src={menuimg} alt="My Image" style={{ width: 30, height: 30 }} />
       </button>
       <nav id="navbar" ref={navbarRef}>
         <ui>

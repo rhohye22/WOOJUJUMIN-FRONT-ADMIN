@@ -20,6 +20,7 @@ function App() {
             <Link to="/qna">Q&A관리</Link>
           </nav>
         </header>
+
         <hr />
 
         <main>
@@ -33,7 +34,7 @@ function App() {
       </BrowserRouter>
 
       <footer>
-        <h1>여긴 푸터</h1>
+        <p>여긴 푸터</p>
       </footer>
     </div>
   );
