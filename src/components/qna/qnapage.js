@@ -1,16 +1,26 @@
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Link,
+  useNavigate,
+} from "react-router-dom";
 import React, { useEffect, useLayoutEffect, useState } from "react";
 import styled from "styled-components";
 import { Nav } from "react-bootstrap";
-import AllQna from "./qna";
+import AllQna from "./allqna";
+import Typeqna from "./typeqna";
 
 import "./qna.css";
 
 function Qnapage() {
+  const navigate = useNavigate();
   const [activeIndex, setActiveIndex] = useState(0);
+  const [qtype, setQtype] = useState(""); // qtype 상태값 추가
 
-  const tabClickHandler = (index) => {
+  const tabClickHandler = (index, qtype) => {
     setActiveIndex(index);
+    setQtype(qtype); // qtype 상태값 설정
   };
 
   const tabContArr = [
@@ -38,7 +48,7 @@ function Qnapage() {
       tabTitle: (
         <li
           className={activeIndex === 1 ? "is-active" : ""}
-          onClick={() => tabClickHandler(1)}
+          onClick={() => tabClickHandler(1, "회원관리")}
         >
           회원관련
         </li>
@@ -46,7 +56,7 @@ function Qnapage() {
       tabCont: (
         <div className="qnapage">
           <div className="qnapageLeft">
-            <AllQna />
+            <Typeqna qtype={qtype} />
           </div>
           <div className="qnapageRight">
             <p>답변달기</p>
@@ -58,7 +68,7 @@ function Qnapage() {
       tabTitle: (
         <li
           className={activeIndex === 2 ? "is-active" : ""}
-          onClick={() => tabClickHandler(2)}
+          onClick={() => tabClickHandler(2, "게시글관리")}
         >
           게시글관련
         </li>
@@ -66,7 +76,7 @@ function Qnapage() {
       tabCont: (
         <div className="qnapage">
           <div className="qnapageLeft">
-            <AllQna />
+            <Typeqna qtype={qtype} />
           </div>
           <div className="qnapageRight">
             <p>답변달기</p>
@@ -78,7 +88,7 @@ function Qnapage() {
       tabTitle: (
         <li
           className={activeIndex === 3 ? "is-active" : ""}
-          onClick={() => tabClickHandler(3)}
+          onClick={() => tabClickHandler(3, "파티관리")}
         >
           파티관련
         </li>
@@ -86,7 +96,7 @@ function Qnapage() {
       tabCont: (
         <div className="qnapage">
           <div className="qnapageLeft">
-            <AllQna />
+            <Typeqna qtype={qtype} />
           </div>
           <div className="qnapageRight">
             <p>답변달기</p>
@@ -98,7 +108,7 @@ function Qnapage() {
       tabTitle: (
         <li
           className={activeIndex === 4 ? "is-active" : ""}
-          onClick={() => tabClickHandler(4)}
+          onClick={() => tabClickHandler(4, "오류신고")}
         >
           오류신고
         </li>
@@ -106,7 +116,7 @@ function Qnapage() {
       tabCont: (
         <div className="qnapage">
           <div className="qnapageLeft">
-            <AllQna />
+            <Typeqna qtype={qtype} />
           </div>
           <div className="qnapageRight">
             <p>답변달기</p>
@@ -118,7 +128,7 @@ function Qnapage() {
       tabTitle: (
         <li
           className={activeIndex === 5 ? "is-active" : ""}
-          onClick={() => tabClickHandler(5)}
+          onClick={() => tabClickHandler(5, "기타")}
         >
           기타문의
         </li>
@@ -126,7 +136,7 @@ function Qnapage() {
       tabCont: (
         <div className="qnapage">
           <div className="qnapageLeft">
-            <AllQna />
+            <Typeqna qtype={qtype} />
           </div>
           <div className="qnapageRight">
             <p>답변달기</p>
@@ -135,6 +145,7 @@ function Qnapage() {
       ),
     },
   ];
+  useEffect(() => {}, [qtype]);
 
   return (
     <div>

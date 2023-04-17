@@ -2,14 +2,18 @@ import React, { useEffect, useLayoutEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
-function AllQna() {
+import { useParams } from "react-router-dom";
+
+function Typeqna(props) {
   const navigate = useNavigate();
   const [id, setId] = useState("");
 
   const isLogin = localStorage.getItem("login");
 
   const [qnalist, setQnalist] = useState([]);
+  const [qtypeParam, setQtypeParam] = useState("");
+
+  let qtype = props.qtype;
 
   // paging
 
@@ -23,12 +27,14 @@ function AllQna() {
     }
   }, [navigate, isLogin]);
 
-  function getQnalist() {
+  function typeQnalist(qtype) {
     if (!isLogin) {
       return;
     }
     axios
-      .get("http://localhost:3000/allnewqna")
+      .get("http://localhost:3000/typeqna", {
+        params: { qtype: qtype },
+      })
       .then(function (resp) {
         console.log(resp.data);
         setQnalist(resp.data);
@@ -38,11 +44,11 @@ function AllQna() {
       });
   }
   useEffect(() => {
-    if (id) {
-      getQnalist();
+    if (id && qtype) {
+      // id와 qtype이 모두 있어야만 실행
+      typeQnalist(qtype);
     }
-  }, [id]);
-
+  }, [id, qtype]);
   return (
     <div className="table-container">
       <table border="1">
@@ -77,4 +83,4 @@ function AllQna() {
     </div>
   );
 }
-export default AllQna;
+export default Typeqna;

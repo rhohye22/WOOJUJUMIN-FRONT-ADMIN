@@ -7,6 +7,7 @@ import Regi from "./components/regi";
 
 import Qnapage from "./components/qna/qnapage";
 import Member from "./components/member";
+import Typeqna from "./components/qna/typeqna";
 
 import "./App.css";
 function App() {
@@ -30,6 +31,8 @@ function App() {
             <Route path="/regi" element={<Regi />} />
             <Route path="/main" element={<Main />} />
             <Route path="/qna-management" element={<Qnapage />} />
+            <Route path="/typeqna/:qtype" exact element={<Typeqna />} />
+
             <Route path="/member-management" element={<Member />} />
           </Routes>
         </main>
