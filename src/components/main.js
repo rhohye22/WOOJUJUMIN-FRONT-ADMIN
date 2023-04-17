@@ -1,10 +1,8 @@
-
 function Main() {
-    return (
-        <div>
-            <h1>나는 메인</h1>
-        </div>
-    );
+  return (
+    <>
+      <h1>메인페이지입니다</h1>
+    </>
+  );
 }
-
 export default Main;

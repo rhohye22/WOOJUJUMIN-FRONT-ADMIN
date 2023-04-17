@@ -1,8 +1,10 @@
 import React from "react";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-
+import ToggleMenu from "./components/togglemenu";
 import Login from "./components/login";
 import Main from "./components/main";
+
+import Qna from "./components/qna";
 
 import "./App.css";
 
@@ -12,25 +14,27 @@ function App() {
       <BrowserRouter>
         <header>
           <nav>
-            <h1>여기 네비바</h1>
+            <ToggleMenu />
+            <Link to="/">로그인</Link>&nbsp;&nbsp;&nbsp;
+            <Link to="/main">메인</Link>&nbsp;&nbsp;&nbsp;
+            <Link to="/qna">Q&A관리</Link>
           </nav>
-          <Link to="/">우주주민</Link>
         </header>
+
         <hr />
 
         <main>
           <Routes>
             <Route path="/" element={<Login />} />
             <Route path="/main" element={<Main />} />
+            <Route path="/qna" element={<Qna />} />
           </Routes>
-            <h2>테스트입니다</h2>
-            <h3>올라가라!</h3>
         </main>
         <hr />
       </BrowserRouter>
 
       <footer>
-        <h1>여긴 푸터</h1>
+        <p>여긴 푸터</p>
       </footer>
     </div>
   );
