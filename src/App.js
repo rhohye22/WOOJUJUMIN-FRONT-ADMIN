@@ -3,8 +3,11 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
 import Login from "./components/login";
 import Main from "./components/main";
+import Calendar from "./components/calendar";
 
 import "./App.css";
+import Calendarwrite from "./components/calendarwrite";
+
 
 function App() {
   return (
@@ -15,6 +18,7 @@ function App() {
             <h1>여기 네비바</h1>
           </nav>
           <Link to="/">우주주민</Link>
+          <Link to="/Calendar">일정관리</Link>
         </header>
         <hr />
 
@@ -22,9 +26,9 @@ function App() {
           <Routes>
             <Route path="/" element={<Login />} />
             <Route path="/main" element={<Main />} />
+            <Route path="/calendar" element={<Calendar />} />
+            <Route path="/calendarwrite/:year/:month/:day" element={<Calendarwrite />} />
           </Routes>
-            <h2>테스트입니다</h2>
-            <h3>올라가라!</h3>
         </main>
         <hr />
       </BrowserRouter>
