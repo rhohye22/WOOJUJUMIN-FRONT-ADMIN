@@ -1,0 +1,54 @@
+.qnapage {
+  width: 100vw;
+  margin-left: 0;
+  display: flex;
+}
+
+.qnapageLeft {
+  width: 45%;
+  height: 100vh;
+  background-color: aquamarine;
+}
+.qnapageRight {
+  width: 55%;
+  height: 100vh;
+  background-color: bisque;
+}
+
+.tabs {
+  display: flex;
+
+  list-style-type: none;
+
+  padding: 0;
+}
+
+.tabs li {
+  cursor: pointer;
+  margin-right: 1rem;
+  padding: 0.5rem;
+}
+
+.tabs li.is-active {
+  background-color: #e0acac;
+}
+
+.tabs li:hover {
+  background-color: #dcbbbb;
+}
+
+.tabs li:focus {
+  outline: none;
+}
+
+.tabs li:not(.is-active) {
+  opacity: 0.5;
+}
+
+.tabs li:last-child {
+  margin-right: 0;
+}
+
+.tab-content {
+  margin-top: 1rem;
+}

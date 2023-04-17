@@ -45,8 +45,14 @@ function ToggleMenu() {
           </li>
 
           <li>
-            <a href="/qna" style={{ color: "white" }}>
+            <a href="/qna-management" style={{ color: "white" }}>
               Q&A관리
+            </a>
+          </li>
+
+          <li>
+            <a href="/member-management" style={{ color: "white" }}>
+              회원관리
             </a>
           </li>
         </ui>
