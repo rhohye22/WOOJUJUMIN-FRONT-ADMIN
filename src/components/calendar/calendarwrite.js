@@ -96,7 +96,7 @@ function Calendarwrite() {
                     <tr>
 
                         <th>내용</th>
-                        <td><textarea placeholder="내용을 입력" onChange={(e) => setContent(e.target.value)} /></td>
+                        <td><textarea placeholder="내용을 입력!!" onChange={(e) => setContent(e.target.value)} /></td>
                     </tr>
                 </tbody>
             </table>
