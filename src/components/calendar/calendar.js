@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from 'react-router-dom';
-import Ink from "../images/ink.png";
+import Ink from "../image/ink.png";
+import Table from "react-bootstrap/Table";
 
 function Calendar() {
 
@@ -12,54 +13,81 @@ function Calendar() {
     const [dayOfWeek, setDayOfWeek] = useState(0);
     const [lastday, setLastday] = useState(0);
     const [weekday, setWeekday] = useState(0);
+    const [yyyymm, setYyyymm] = useState("");
+    const [sendyyyymm, setSendyyymm] = useState("");
+    const [calendardto, setCalendardto] = useState([]);
 
-    const fetchData = async (sendYear, sendMonth) => {
-        await axios.post("http://localhost:3000/calendarmain", null, { params: { "sendYear": sendYear, "sendMonth": sendMonth } })
-            .then(function (res) {
-                // alert(res.data);
-                console.log(JSON.stringify(res.data));
-                // console.log(JSON.stringify(res.data.dayOfWeek));
-                // console.log(res.data.dayOfWeek);
-                setDayOfWeek(res.data.dayOfWeek);
-                setLastday(res.data.lastday);
-                setWeekday(res.data.weekday);
-                setYear(res.data.year);
-                // alert(charTwo(msg));
-                setMonth(charTwo(res.data.month));
-                // console.log(dayOfWeek);
-                // console.log(weekday);
-                // console.log(lastday);
-            })
-            .catch(function (err) {
-                alert(err);
-            });
-    }
+    useEffect(() => {
+        
+        const fetchData = async (sendYear, sendMonth) => {
+            await axios.post("http://localhost:3000/calendarmain", null, { params: { "sendYear": sendYear, "sendMonth": sendMonth, "sendYyyymm": sendyyyymm } })
+                .then(function (res) {
+                    // alert(res.data);
+                    console.log(JSON.stringify(res.data));
+                    // console.log(JSON.stringify(res.data.dayOfWeek));
+                    // console.log(res.data.dayOfWeek);
+                    setDayOfWeek(res.data.dayOfWeek);
+                    setLastday(res.data.lastday);
+                    setWeekday(res.data.weekday);
+                    setYear(res.data.year);
+                    // alert(charTwo(msg));
+                    setMonth(charTwo(res.data.month));
+                    // console.log(dayOfWeek);
+                    // console.log(weekday);
+                    // console.log(lastday);
+                    setYyyymm(res.data.year + charTwo(res.data.month));
+                    setCalendardto(res.data.list);
+                })
+                .catch(function (err) {
+                    alert(err);
+                });
+        }
 
+        fetchData(sendYear, sendMonth);
+
+    }, [sendMonth, sendYear, sendyyyymm]);
+
+    // 전년도
     function prevYear() {
         // alert(year);
         // alert(month);
         setSendYear(year - 1);
         setSendMonth(Number(month));
+        let intToString = String(year - 1) + charTwo(Number(month));
+        setSendyyymm(intToString);
     }
 
+    // 전월
     function prevMonth() {
         setSendYear(year);
         setSendMonth(Number(month) - 1);
+        let intToString = String(year) + charTwo(Number(month) - 1);
+        setSendyyymm(intToString);
+
     }
 
+    // 익월
     function nextMonth() {
         setSendYear(year);
         setSendMonth(Number(month) + 1);
+        let intToString = String(year) + charTwo(Number(month) + 1);
+        setSendyyymm(intToString);
+
     }
 
+    // 내년도
     function nextYear() {
         setSendYear(year + 1);
         setSendMonth(Number(month));
+        let intToString = String(year + 1) + charTwo(Number(month));
+        setSendyyymm(intToString);
     }
 
+    // 오늘날짜로 돌아오기
     function todaySet() {
         setSendYear("");
         setSendMonth("");
+        setSendyyymm("");
     }
 
     // 한자리 숫자를 두자리로 만들어주는 함수 : 1 ~ 9 -> 01 ~ 09
@@ -71,11 +99,25 @@ function Calendar() {
         return msg.trim().length < 2 ? "0" + msg.trim() : msg.trim();
     }
 
-    useEffect(() => {
-        fetchData(sendYear, sendMonth);
-    }, [sendMonth, sendYear]);
+    // 제목 길면 ... 으로 변경해주는 함수 
+    function dot3(msg) {
+        let str = "";
+        if (msg.length >= 10) {
+            str = msg.substring(0, 6); //0 부터 10 전까지  - 6으로 바꿈 
+            str += "...";
+        } else {
+            str = msg.trim();
+        }
+        return str;
+    }
+
+    // 의존성 배열로 경고나서 useEffect안에 함수 정의 함수 불러오기 수정 
+    // useEffect(() => {
+    //     fetchData(sendYear, sendMonth);
+    // }, [sendMonth, sendYear, sendyyyymm]);
 
 
+    // 달력 가져오기
     const calendarList = () => {
         let arrTop = [];
         let row = [];
@@ -88,7 +130,22 @@ function Calendar() {
         // 날짜
         // `/some-url?month=${monthValue}&day=${dayValue}`
         for (let i = 1; i <= lastday; i++) {
-            row.push(<td key={i + dayOfWeek - 1}>{i} <Link to={`/calendarwrite/${year}/${month}/${i}`}><img alt="글 쓰기" src={Ink} style={{ width: "20px", height: "25px" }} /></Link></td>);
+
+            const tableList = calendardto.map((cal, index) => {
+                let selDate = year + charTwo(month) + charTwo(i);
+
+                return (
+                    cal.rdate.substring(0, 8) === selDate ? ( // 값이 true일 때 테이블을 출력하도록 설정
+                        <table key={index}>
+                            <tbody>
+                                <tr><td><Link to={`/calendardetail/${cal.calSeq}`}>{cal.tagName}----{dot3(cal.title)}</Link></td></tr>
+                            </tbody>
+                        </table>
+                    ) : null // 속성이 false일 경우, null을 반환하여 아무것도 출력하지 않도록 설정
+                );
+            });
+
+            row.push(<td key={i + dayOfWeek - 1}><Link to={`/calendarlist/${year}${month}${charTwo(i)}`}>{i} </Link><Link to={`/calendarwrite/${year}/${month}/${i}`}><img alt="글 쓰기" src={Ink} style={{ width: "20px", height: "25px" }} /></Link>{tableList}</td>);
             if ((i + dayOfWeek - 1) % 7 === 0 && i !== lastday) {
                 arrTop.push(<tr key={i} style={{ height: "100px", textAlign: "left", verticalAlign: "top" }}>{row}</tr>);
                 row = [];
@@ -105,28 +162,13 @@ function Calendar() {
         return <>{arrTop}</>;
     };
 
-    function makeTable(year, month, i){
-        let rdate = year + charTwo(month) + charTwo(i);
-        let tableList = [];
-
-        
-        
-        
-
-        return(
-            <table>
-                <tbody>
-                </tbody>
-            </table>
-        )
-    }
 
     return (
         <div>
 
             <h1>여기가 캘린더 입니다</h1>
             <div>
-                <table border="1">
+                <Table responsive>
                     <colgroup>
                         <col width="100" />
                         <col width="100" />
@@ -162,7 +204,13 @@ function Calendar() {
                     <tbody>
                         {calendarList()}
                     </tbody>
-                </table>
+                </Table>
+            </div>
+
+            <div>
+                <h2>넘어오는지 테스트</h2>
+                <p>{yyyymm}</p>
+                {/* <MakeTable /> */}
             </div>
 
         </div>
