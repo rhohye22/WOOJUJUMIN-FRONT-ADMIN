@@ -6,11 +6,10 @@ import ToggleMenu from "./components/togglemenu";
 import Login from "./components/login";
 import Main from "./components/main";
 
-import Calendar from "./components/calendar";
+import Calendar from "./components/calendar/calendar";
 
 import "./App.css";
-import Calendarwrite from "./components/calendarwrite";
-
+import Calendarwrite from "./components/calendar/calendarwrite";
 
 import Regi from "./components/regi";
 
@@ -21,6 +20,9 @@ import Qnadetail from "./components/qna/qnadetail";
 
 
 import "./App.css";
+import Calendardetail from "./components/calendar/calendardetail";
+import CalendarList from "./components/calendar/calendarlist";
+
 function App() {
   return (
     <div className="App">
@@ -46,6 +48,8 @@ function App() {
 
             <Route path="/calendar" element={<Calendar />} />
             <Route path="/calendarwrite/:year/:month/:day" element={<Calendarwrite />} />
+            <Route path="/calendardetail/:calSeq" element={<Calendardetail />} />
+            <Route path="/calendarlist/:rdate" element={<CalendarList />} />
 
             <Route path="/qna-management" element={<Qnapage />} />
             <Route path="/typeqna/:qtype" exact element={<Typeqna />} />
