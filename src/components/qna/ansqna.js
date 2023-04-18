@@ -5,18 +5,21 @@ import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import Table from "react-bootstrap/Table";
 import Qnamodal from "./qnamodal";
-function Typeqna(props) {
+function Ansqna() {
   const navigate = useNavigate();
   const [id, setId] = useState("");
 
   const isLogin = localStorage.getItem("login");
 
   const [qnalist, setQnalist] = useState([]);
-  const [qtypeParam, setQtypeParam] = useState("");
 
-  let qtype = props.qtype;
+  //
+  const [qnaSeq, setQnaSeq] = useState(""); // qtype 상태값 추
+  const ClickHandler = (qnaSeq) => {
+    setQnaSeq(qnaSeq); // qnaSeq 상태값 설정
+  };
 
-  // paging
+  //
 
   useEffect(() => {
     if (isLogin == null) {
@@ -28,14 +31,12 @@ function Typeqna(props) {
     }
   }, [navigate, isLogin]);
 
-  function typeQnalist(qtype) {
+  function getQnalist() {
     if (!isLogin) {
       return;
     }
     axios
-      .get("http://localhost:3000/typeqna", {
-        params: { qtype: qtype },
-      })
+      .get("http://localhost:3000/answeredqns")
       .then(function (resp) {
         console.log(resp.data);
         setQnalist(resp.data);
@@ -44,12 +45,15 @@ function Typeqna(props) {
         alert(err);
       });
   }
+
+  const [qtype, setQtype] = useState("");
+
   useEffect(() => {
-    if (id && qtype) {
-      // id와 qtype이 모두 있어야만 실행
-      typeQnalist(qtype);
+    if (id) {
+      getQnalist();
     }
-  }, [id, qtype]);
+  }, [id]);
+
   return (
     <div>
       <Table striped bordered hover>
@@ -88,4 +92,5 @@ function Typeqna(props) {
     </div>
   );
 }
-export default Typeqna;
+
+export default Ansqna;
