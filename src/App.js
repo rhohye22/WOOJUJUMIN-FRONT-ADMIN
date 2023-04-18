@@ -1,13 +1,18 @@
 import React from "react";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+
 import ToggleMenu from "./components/togglemenu";
 import Login from "./components/login";
 import Main from "./components/main";
+import Regi from "./components/regi";
 
-import Qna from "./components/qna";
+import Qnapage from "./components/qna/qnapage";
+import Member from "./components/member";
+import Typeqna from "./components/qna/typeqna";
+import Qnadetail from "./components/qna/qnadetail";
 
 import "./App.css";
-
 function App() {
   return (
     <div className="App">
@@ -17,17 +22,20 @@ function App() {
             <ToggleMenu />
             <Link to="/">로그인</Link>&nbsp;&nbsp;&nbsp;
             <Link to="/main">메인</Link>&nbsp;&nbsp;&nbsp;
-            <Link to="/qna">Q&A관리</Link>
+            <Link to="/qna-management">Q&A관리</Link>
           </nav>
         </header>
-
-        <hr />
 
         <main>
           <Routes>
             <Route path="/" element={<Login />} />
+            <Route path="/regi" element={<Regi />} />
             <Route path="/main" element={<Main />} />
-            <Route path="/qna" element={<Qna />} />
+            <Route path="/qna-management" element={<Qnapage />} />
+            <Route path="/typeqna/:qtype" exact element={<Typeqna />} />
+            <Route path="/qnadetail/:qnaSeq" exact element={<Qnadetail />} />
+
+            <Route path="/member-management" element={<Member />} />
           </Routes>
         </main>
         <hr />
