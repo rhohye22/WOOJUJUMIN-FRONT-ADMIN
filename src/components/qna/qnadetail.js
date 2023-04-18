@@ -53,12 +53,9 @@ function Qnadetail(props) {
             <th>내용</th>
             <td style={{ textAlign: "left" }}>{qna.content}</td>
           </tr>
+
           <tr>
-            <th>답변일자</th>
-            <td style={{ textAlign: "left" }}>{qna.ansdate}</td>
-          </tr>
-          <tr>
-            <th>답변</th>
+            <th>답변등록</th>
             <td style={{ textAlign: "left" }}>{qna.answer}</td>
           </tr>
         </tbody>
