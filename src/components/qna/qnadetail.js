@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-
+import Table from "react-bootstrap/Table";
 import Qnamodal from "./qnamodal";
 function Qnadetail(props) {
   const [qna, setQna] = useState();
@@ -29,7 +29,7 @@ function Qnadetail(props) {
 
   return (
     <div>
-      <table align="center" border="1">
+      <Table responsive>
         <colgroup>
           <col style={{ width: "150px" }} />
           <col style={{ width: "500px" }} />
@@ -62,7 +62,7 @@ function Qnadetail(props) {
             <td style={{ textAlign: "left" }}>{qna.answer}</td>
           </tr>
         </tbody>
-      </table>
+      </Table>
     </div>
   );
 }

@@ -20,7 +20,7 @@ function Qnamodal(props) {
     <div>
       <Button onClick={handleShow}>답변등록</Button>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose} size="lg">
         <Modal.Header>
           <Modal.Title>답변등록</Modal.Title>
         </Modal.Header>
