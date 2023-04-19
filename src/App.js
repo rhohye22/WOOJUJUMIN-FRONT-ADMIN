@@ -22,6 +22,7 @@ import Qnadetail from "./components/qna/qnadetail";
 import "./App.css";
 import Calendardetail from "./components/calendar/calendardetail";
 import CalendarList from "./components/calendar/calendarlist";
+import Calendarupdate from "./components/calendar/calendatupdate";
 
 function App() {
   return (
@@ -50,6 +51,7 @@ function App() {
             <Route path="/calendarwrite/:year/:month/:day" element={<Calendarwrite />} />
             <Route path="/calendardetail/:calSeq" element={<Calendardetail />} />
             <Route path="/calendarlist/:rdate" element={<CalendarList />} />
+            <Route path="/calendarupdate/:calSeq" element={<Calendarupdate />} />
 
             <Route path="/qna-management" element={<Qnapage />} />
             <Route path="/typeqna/:qtype" exact element={<Typeqna />} />
