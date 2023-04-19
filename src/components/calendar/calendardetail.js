@@ -1,9 +1,11 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 
 function Calendardetail() {
+
+    let history = useNavigate();
 
     // 뒤에 () 안붙이면 오류 난다ㅠ_ㅠ 
     const { calSeq } = useParams();
@@ -56,6 +58,25 @@ function Calendardetail() {
 
     }, [calSeq]);
 
+    function delBtn(){
+        // alert("확인용");
+
+        const result = window.confirm("정말로 삭제하시겠습니까?");
+        if(result){
+            axios.get("http://localhost:3000/calendardelete", {params:{"calSeq":calSeq}})
+            .then(function(res){
+                if(res.data==="YES"){
+                    history("/calendar");
+                }
+            })
+            .catch(function(err){
+                alert(err);
+            })
+        }
+        else {
+            
+        }
+    }
 
     function Caldetail() {
 
@@ -80,6 +101,8 @@ function Calendardetail() {
         <div>
             <h2>여기는 일정 상세보기입니다.</h2>
             <Caldetail />
+            <button type="button"><Link to={`/calendarupdate/${calSeq}`}>일정 수정하기</Link></button>
+            <button type="button" onClick={delBtn}>일정 삭제하기</button>
         </div>
     )
 }
