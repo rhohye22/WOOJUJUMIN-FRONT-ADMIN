@@ -20,6 +20,7 @@ function Calendarwrite() {
     let reserTimeSplit = reserTime.split(":").join("");
     let rdate = 0;
     rdate = year + month + charDay + reserTimeSplit;
+    let yyyymm = year + ""+month;
     // console.log(rdate);
     // alert(reserTimeSplit);
     // const [id, setId] = useState("");
@@ -52,7 +53,7 @@ function Calendarwrite() {
             .then(function (res) {
                 // alert(res.data);
                 if (res.data === "YES") {
-                    history("/calendar");
+                    history(`/calendar/${year}/${month}/${yyyymm}`);
                 }
             })
             .catch(function (err) {

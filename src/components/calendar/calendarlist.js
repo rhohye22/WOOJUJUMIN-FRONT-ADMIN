@@ -1,8 +1,10 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 function CalendarList() {
+
+    let navigate = useNavigate();
 
     const { rdate } = useParams();
     console.log(rdate);
@@ -32,6 +34,12 @@ function CalendarList() {
         fetchData();
     }, [rdate, storedId]);
 
+    function calendarlist(){
+        const year = rdate.substring(0,4);
+        const month =rdate.substring(4,6);
+        const yyyymm = rdate.substring(0,6);
+        navigate(`/calendar/${year}/${month}/${yyyymm}`);
+    }
     return (
         <div>
             <h2>여기는 일정리스트 보기!</h2>
@@ -59,6 +67,7 @@ function CalendarList() {
                     }
                 </tbody>
             </table>
+            <button type="button" onClick={calendarlist}>일정 돌아가기</button>
         </div>
     )
 }
