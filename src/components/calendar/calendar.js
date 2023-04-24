@@ -1,24 +1,46 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from 'react-router-dom';
+import { Link, useParams} from 'react-router-dom';
 import Ink from "../image/ink.png";
 import Table from "react-bootstrap/Table";
 
 function Calendar() {
 
+    let { ryear, rmonth, ryyyymm } = useParams();
+
+
+    function nvl(msg){
+        return msg===null||msg.trim()===""?true:false;
+    }
+
+    if ( nvl(ryear) || nvl(rmonth) || nvl(ryyyymm)) {
+
+
+        
+        const currentDate = new Date();
+        ryear = String(currentDate.getFullYear());
+        // rmonth = new Date().getMonth() + 1;
+        rmonth = String(currentDate.getMonth() + 1).padStart(2, '0');
+        const currentDay = String(currentDate.getDate()).padStart(2, '0');
+        ryyyymm = rmonth + currentDay;
+    }
+
+    console.log(ryear);
+    console.log(rmonth);
+    console.log(ryyyymm);
     const [year, setYear] = useState("");
     const [month, setMonth] = useState("");
-    const [sendYear, setSendYear] = useState("");
-    const [sendMonth, setSendMonth] = useState("");
+    const [sendYear, setSendYear] = useState(ryear);
+    const [sendMonth, setSendMonth] = useState(rmonth);
     const [dayOfWeek, setDayOfWeek] = useState(0);
     const [lastday, setLastday] = useState(0);
     const [weekday, setWeekday] = useState(0);
     const [yyyymm, setYyyymm] = useState("");
-    const [sendyyyymm, setSendyyymm] = useState("");
+    const [sendyyyymm, setSendyyymm] = useState(ryyyymm);
     const [calendardto, setCalendardto] = useState([]);
 
     useEffect(() => {
-        
+
         const fetchData = async (sendYear, sendMonth) => {
             await axios.post("http://localhost:3000/calendarmain", null, { params: { "sendYear": sendYear, "sendMonth": sendMonth, "sendYyyymm": sendyyyymm } })
                 .then(function (res) {
