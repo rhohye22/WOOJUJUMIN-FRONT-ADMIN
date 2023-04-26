@@ -55,7 +55,7 @@ function AllQna() {
     <>
       <div className="qnapageLeft">
         <SimpleBarReact>
-          <div ref={simpleBarRef} style={{ maxHeight: 500 }}>
+          <div ref={simpleBarRef} style={{ maxHeight: "100vh" }}>
             <Table striped bordered hover>
               <thead>
                 <tr>

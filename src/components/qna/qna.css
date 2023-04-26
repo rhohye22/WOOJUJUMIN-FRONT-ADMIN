@@ -20,13 +20,13 @@ p {
 .qnapageLeft {
   width: 45%;
   height: 100vh;
-  padding-top: 10px;
-  padding-left: 10px;
+  padding: 30px;
   background-color: rgb(237, 243, 241);
 }
 .qnapageRight {
   width: 55%;
   height: 100vh;
+  padding: 30px;
   background-color: rgb(255, 251, 248);
 }
 

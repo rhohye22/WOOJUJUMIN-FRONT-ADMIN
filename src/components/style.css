@@ -87,19 +87,25 @@ button:focus {
   top: 0;
   right: 0;
 }
-.menucontainer1 {
+.menucontainerTop {
   padding-top: 5%;
   display: flex;
   flex-direction: row; /* 자식 요소들을 가로 방향으로 배치 */
   justify-content: center; /* 자식 요소들을 수평 방향으로 중앙에 정렬 */
   align-items: center;
 }
-.menucontainer2 {
+.menuicon {
   margin-left: 20px;
 }
-.menucontainer2 p {
+.menuicon p {
   margin-top: 10px; /* 이미지와 텍스트 사이 간격을 조절 */
 }
+.menucontainerBottom {
+  display: flex;
+  justify-content: center; /* 자식 요소들을 수평 방향으로 중앙에 정렬 */
+  align-items: center;
+}
+
 .background {
   position: relative;
   width: 100px;

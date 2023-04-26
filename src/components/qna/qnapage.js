@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, Link, useNavigate } from "react-router-dom";
 import React, { useEffect, useLayoutEffect, useState } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 import AllQna from "./allqna";
 import Ansqna from "./ansqna";
@@ -8,16 +9,42 @@ import Typeqna from "./typeqna";
 import "./qna.css";
 
 function Qnapage() {
+  const navigate = useNavigate();
+
+  function handleNavigation(route) {
+    navigate(route);
+  }
+
   return (
     <div className="qnapage">
-      <div className="qnanav">
-        <Link to="allqna">질문 전체</Link>&nbsp;&nbsp;&nbsp;
-        <Link to="memberqna">회원관리</Link>&nbsp;&nbsp;&nbsp;
-        <Link to="bbsrqna">게시글관리</Link>&nbsp;&nbsp;&nbsp;
-        <Link to="partyqna">파티관리</Link>&nbsp;&nbsp;&nbsp;
-        <Link to="errorqna">오류신고</Link>&nbsp;&nbsp;&nbsp;
-        <Link to="etcqna">기타</Link>&nbsp;&nbsp;&nbsp;
-        <Link to="completedqna">답변 완료◦수정</Link>&nbsp;&nbsp;&nbsp;
+      <div className="qnanav" style={{ textAlign: "left" }}>
+        <button className="btn btn-primary" onClick={() => handleNavigation("allqna")}>
+          질문 전체
+        </button>
+        &nbsp;&nbsp;&nbsp;
+        <button className="btn btn-primary" onClick={() => handleNavigation("memberqna")}>
+          회원관리
+        </button>
+        &nbsp;&nbsp;&nbsp;
+        <button className="btn btn-primary" onClick={() => handleNavigation("bbsrqna")}>
+          게시글관리
+        </button>
+        &nbsp;&nbsp;&nbsp;
+        <button className="btn btn-primary" onClick={() => handleNavigation("partyqna")}>
+          파티관리
+        </button>
+        &nbsp;&nbsp;&nbsp;
+        <button className="btn btn-primary" onClick={() => handleNavigation("errorqna")}>
+          오류신고
+        </button>
+        &nbsp;&nbsp;&nbsp;
+        <button className="btn btn-primary" onClick={() => handleNavigation("etcqna")}>
+          기타
+        </button>
+        &nbsp;&nbsp;&nbsp;
+        <button className="btn btn-primary" onClick={() => handleNavigation("completedqna")}>
+          답변 완료◦수정
+        </button>
       </div>
       <div className="qnacontent">
         <Routes>

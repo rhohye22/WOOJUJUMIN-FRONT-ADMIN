@@ -102,7 +102,7 @@ function Qnadetail() {
           </tr>
           <tr>
             <th>답변내용</th>
-            <td>
+            <td style={{ textAlign: "left" }}>
               <textarea rows="10" value={answer} cols="50" onChange={(e) => setAnswer(e.target.value)} placeholder={qna.answer}></textarea>
             </td>
           </tr>

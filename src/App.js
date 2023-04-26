@@ -15,8 +15,7 @@ import Regi from "./components/regi";
 
 import Qnapage from "./components/qna/qnapage";
 import Member from "./components/member";
-import Typeqna from "./components/qna/typeqna";
-import Qnadetail from "./components/qna/qnadetail";
+import Bbspage from "./components/bbs/bbspage";
 
 import "./App.css";
 
@@ -60,7 +59,7 @@ function App() {
             <Route path="/calendarwrite/:year/:month/:day" element={<Calendarwrite />} />
 
             <Route path="/qna-management/*" element={<Qnapage />} />
-            {/* <Route path="/typeqna/:qtype" exact element={<Typeqna />} /> */}
+            <Route path="/bbs-management/*" element={<Bbspage />} />
 
             <Route path="/member-management" element={<Member />} />
           </Routes>
