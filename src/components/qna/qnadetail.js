@@ -4,14 +4,16 @@ import { useParams, useNavigate } from "react-router-dom";
 import Table from "react-bootstrap/Table";
 import Qnamodal from "./qnamodal";
 
-function Qnadetail(props) {
+function Qnadetail() {
   const [qna, setQna] = useState();
   const [loading, setLoading] = useState(false);
   const [answer, setAnswer] = useState("");
   //const [content, setContent] = useState("");
-  let qnaSeq = props.qnaSeq;
-  //console.log(params.qnaSeq);
+  //let qnaSeq = props.qnaSeq;
 
+  let params = useParams();
+  let qnaSeq = params.qnaSeq;
+  console.log(params.qnaSeq);
   //관리자id,nickname
   const navigate = useNavigate();
   const [id, setId] = useState("");
@@ -38,8 +40,8 @@ function Qnadetail(props) {
   };
 
   useEffect(() => {
-    qnaData(props.qnaSeq);
-  }, [props.qnaSeq]);
+    qnaData(qnaSeq);
+  }, [qnaSeq]);
 
   if (loading === false) {
     return <div>Loading...</div>;
@@ -101,22 +103,12 @@ function Qnadetail(props) {
           <tr>
             <th>답변내용</th>
             <td>
-              <textarea
-                rows="10"
-                value={answer}
-                cols="50"
-                onChange={(e) => setAnswer(e.target.value)}
-                placeholder={qna.answer}
-              ></textarea>
+              <textarea rows="10" value={answer} cols="50" onChange={(e) => setAnswer(e.target.value)} placeholder={qna.answer}></textarea>
             </td>
           </tr>
           <tr>
             <td colSpan={2} style={{ textAlign: "center" }}>
-              <button
-                type="button"
-                onClick={() => makeAnswer()}
-                className="btn btn-primary"
-              >
+              <button type="button" onClick={() => makeAnswer()} className="btn btn-primary">
                 답변등록
               </button>
             </td>

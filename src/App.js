@@ -44,13 +44,9 @@ function App() {
           <nav>
             <ToggleMenu />
             <Link to="/main">메인</Link>&nbsp;&nbsp;&nbsp;
-            <Link to="/qna-management">Q&A관리</Link> &nbsp;&nbsp;&nbsp;
+            <Link to="/qna-management/allqna">Q&A관리</Link> &nbsp;&nbsp;&nbsp;
             <Link to="/Calendar">일정관리</Link> &nbsp;&nbsp;&nbsp;
-            {log ? (
-              <Link to="/">로그인</Link>
-            ) : (
-              <button onClick={loghandle}>로그아웃</button>
-            )}
+            {log ? <Link to="/">로그인</Link> : <button onClick={loghandle}>로그아웃</button>}
           </nav>
         </header>
 
@@ -61,24 +57,19 @@ function App() {
             <Route path="/main" element={<Main />} />
 
             <Route path="/calendar" element={<Calendar />} />
-            <Route
-              path="/calendarwrite/:year/:month/:day"
-              element={<Calendarwrite />}
-            />
+            <Route path="/calendarwrite/:year/:month/:day" element={<Calendarwrite />} />
 
-            <Route path="/qna-management" element={<Qnapage />} />
-            <Route path="/typeqna/:qtype" exact element={<Typeqna />} />
-            <Route path="/qnadetail/:qnaSeq" exact element={<Qnadetail />} />
+            <Route path="/qna-management/*" element={<Qnapage />} />
+            {/* <Route path="/typeqna/:qtype" exact element={<Typeqna />} /> */}
 
             <Route path="/member-management" element={<Member />} />
           </Routes>
         </main>
-        <hr />
       </BrowserRouter>
 
-      <footer>
+      {/*  <footer>
         <p>여긴 푸터</p>
-      </footer>
+      </footer> */}
     </div>
   );
 }

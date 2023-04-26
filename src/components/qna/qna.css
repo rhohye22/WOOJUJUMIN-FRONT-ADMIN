@@ -5,25 +5,33 @@ p {
   position: fixed;
   width: 100vw;
   margin: 0;
-  display: flex;
   height: 100vh;
 }
-
+.qnanav {
+  background-color: rgb(208, 207, 213);
+  height: 50px;
+  position: fixed;
+  width: 100vw;
+}
+.qnacontent {
+  display: flex;
+  padding-top: 50px;
+}
 .qnapageLeft {
-  width: 100%;
+  width: 45%;
   height: 100vh;
   padding-top: 10px;
   padding-left: 10px;
-  background-color: rgb(218, 234, 228);
+  background-color: rgb(237, 243, 241);
 }
-/* .qnapageRight {
+.qnapageRight {
   width: 55%;
   height: 100vh;
-  background-color: bisque;
-} */
+  background-color: rgb(255, 251, 248);
+}
 
 .tabs {
-  width: 70%;
+  width: 40%;
   background-color: rgb(255, 255, 255);
   height: 60px;
   display: flex;
