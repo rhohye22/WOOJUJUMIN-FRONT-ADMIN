@@ -1,10 +1,12 @@
-import React, { useEffect, useLayoutEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState, useRef } from "react";
+import { BrowserRouter, Routes, Route, Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+
 import { useParams } from "react-router-dom";
+import SimpleBarReact from "simplebar-react";
 import Table from "react-bootstrap/Table";
-import Qnamodal from "./qnamodal";
+import Qnadetail from "./qnadetail";
+
 function AllQna() {
   const navigate = useNavigate();
   const [id, setId] = useState("");
@@ -13,12 +15,7 @@ function AllQna() {
 
   const [qnalist, setQnalist] = useState([]);
 
-  //
-  const [qnaSeq, setQnaSeq] = useState(""); // qtype 상태값 추
-  const ClickHandler = (qnaSeq) => {
-    setQnaSeq(qnaSeq); // qnaSeq 상태값 설정
-  };
-
+  const simpleBarRef = useRef(null);
   //
 
   useEffect(() => {
@@ -55,41 +52,48 @@ function AllQna() {
   }, [id]);
 
   return (
-    <div>
-      <Table striped bordered hover>
-        <thead>
-          <tr>
-            <th>제목</th>
-            <th>작성날짜</th>
-            <th>답변</th>
-          </tr>
-        </thead>
-        <tbody>
-          {qnalist && qnalist.length ? (
-            qnalist.map(function (qna, i) {
-              return (
-                <tr key={i}>
-                  <td align="left">
-                    {qna.ansdate ? (
-                      <span>[답변완료] </span>
-                    ) : (
-                      <span>[답변대기중] </span>
-                    )}
-                    {qna.title}
-                  </td>
-                  <td>{qna.wdate.substring(0, 10)}</td>
-                  <td>
-                    <Qnamodal qnaSeq={qna.qnaSeq} />
-                  </td>
+    <>
+      <div className="qnapageLeft">
+        <SimpleBarReact>
+          <div ref={simpleBarRef} style={{ maxHeight: "100vh" }}>
+            <Table striped bordered hover>
+              <thead>
+                <tr>
+                  <th>제목</th>
+                  <th>작성날짜</th>
+                  <th>답변</th>
                 </tr>
-              );
-            })
-          ) : (
-            <td colSpan={2}>작성된 문의글이 없습니다</td>
-          )}
-        </tbody>
-      </Table>
-    </div>
+              </thead>
+              <tbody>
+                {qnalist && qnalist.length ? (
+                  qnalist.map(function (qna, i) {
+                    return (
+                      <tr key={i}>
+                        <td align="left">
+                          {qna.ansdate ? <span>[답변완료] </span> : <span>[답변대기중] </span>}
+                          {qna.title}
+                        </td>
+                        <td>{qna.wdate.substring(0, 10)}</td>
+                        <td>
+                          <button onClick={() => navigate(`${qna.qnaSeq}`)}>답변하기</button>
+                        </td>
+                      </tr>
+                    );
+                  })
+                ) : (
+                  <td colSpan={2}>작성된 문의글이 없습니다</td>
+                )}
+              </tbody>
+            </Table>
+          </div>
+        </SimpleBarReact>
+      </div>
+      <div className="qnapageRight">
+        <Routes>
+          <Route path="/:qnaSeq" element={<Qnadetail />} />
+        </Routes>
+      </div>
+    </>
   );
 }
 
