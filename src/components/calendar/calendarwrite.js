@@ -20,6 +20,7 @@ function Calendarwrite() {
     let reserTimeSplit = reserTime.split(":").join("");
     let rdate = 0;
     rdate = year + month + charDay + reserTimeSplit;
+    let yyyymm = year + ""+month;
     // console.log(rdate);
     // alert(reserTimeSplit);
     // const [id, setId] = useState("");
@@ -52,7 +53,7 @@ function Calendarwrite() {
             .then(function (res) {
                 // alert(res.data);
                 if (res.data === "YES") {
-                    history("/calendar");
+                    history(`/calendar/${year}/${month}/${yyyymm}`);
                 }
             })
             .catch(function (err) {
@@ -96,7 +97,7 @@ function Calendarwrite() {
                     <tr>
 
                         <th>내용</th>
-                        <td><textarea placeholder="내용을 입력" onChange={(e) => setContent(e.target.value)} /></td>
+                        <td><textarea placeholder="내용을 입력!!" onChange={(e) => setContent(e.target.value)} /></td>
                     </tr>
                 </tbody>
             </table>
