@@ -34,7 +34,7 @@ function Login() {
         // alert(resp.data);
         if (resp.data !== null && resp.data !== "") {
           alert(resp.data.nickname + "님 환영합니다");
-
+          console.log(resp.data);
           localStorage.setItem("login", JSON.stringify(resp.data));
 
           document.location.href = "/main";
@@ -64,18 +64,9 @@ function Login() {
   return (
     <div>
       <h3>Login</h3>
-      <input
-        value={id}
-        onChange={(e) => setId(e.target.value)}
-        placeholder="아이디"
-      />
+      <input value={id} onChange={(e) => setId(e.target.value)} placeholder="아이디" />
       <br />
-      <input
-        type="password"
-        value={pwd}
-        onChange={(e) => setPwd(e.target.value)}
-        placeholder="패스워드"
-      />
+      <input type="password" value={pwd} onChange={(e) => setPwd(e.target.value)} placeholder="패스워드" />
       <br />
       <input type="checkbox" checked={saveId} onChange={CheckHandler} />
       아이디저장

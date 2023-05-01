@@ -54,40 +54,37 @@ function AllQna() {
   return (
     <>
       <div className="qnapageLeft">
-        <SimpleBarReact>
-          <div ref={simpleBarRef} style={{ maxHeight: "100vh" }}>
-            <Table striped bordered hover>
-              <thead>
-                <tr>
-                  <th>제목</th>
-                  <th>작성날짜</th>
-                  <th>답변</th>
-                </tr>
-              </thead>
-              <tbody>
-                {qnalist && qnalist.length ? (
-                  qnalist.map(function (qna, i) {
-                    return (
-                      <tr key={i}>
-                        <td align="left">
-                          {qna.ansdate ? <span>[답변완료] </span> : <span>[답변대기중] </span>}
-                          {qna.title}
-                        </td>
-                        <td>{qna.wdate.substring(0, 10)}</td>
-                        <td>
-                          <button onClick={() => navigate(`${qna.qnaSeq}`)}>답변하기</button>
-                        </td>
-                      </tr>
-                    );
-                  })
-                ) : (
-                  <td colSpan={2}>작성된 문의글이 없습니다</td>
-                )}
-              </tbody>
-            </Table>
-          </div>
-        </SimpleBarReact>
+        <Table striped bordered hover>
+          <thead>
+            <tr>
+              <th>제목</th>
+              <th>작성날짜</th>
+              <th>답변</th>
+            </tr>
+          </thead>
+          <tbody>
+            {qnalist && qnalist.length ? (
+              qnalist.map(function (qna, i) {
+                return (
+                  <tr key={i}>
+                    <td align="left">
+                      {qna.ansdate ? <span>[답변완료] </span> : <span>[답변대기중] </span>}
+                      {qna.title}
+                    </td>
+                    <td>{qna.wdate.substring(0, 10)}</td>
+                    <td>
+                      <button onClick={() => navigate(`${qna.qnaSeq}`)}>답변하기</button>
+                    </td>
+                  </tr>
+                );
+              })
+            ) : (
+              <td colSpan={2}>작성된 문의글이 없습니다</td>
+            )}
+          </tbody>
+        </Table>
       </div>
+
       <div className="qnapageRight">
         <Routes>
           <Route path="/:qnaSeq" element={<Qnadetail />} />
