@@ -20,7 +20,7 @@ body.show-nav {
   transform: translateX(200px);
 }
 
-#navbar {
+/* #navbar {
   background-color: var(--primary-color);
   border-right: 2px solid rgba(200, 200, 200, 0.1);
   color: #fff;
@@ -31,7 +31,7 @@ body.show-nav {
   height: 100vh;
   z-index: 100;
   transform: translateX(-100%);
-}
+} */
 
 header {
   color: #fff;
