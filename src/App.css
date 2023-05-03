@@ -6,52 +6,37 @@
   width: 100%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.loginbox {
+  margin: 0 auto;
+  height: 100vh;
 }
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.basepage1 {
+.basepage {
+  background-color: #f9f5e7;
   text-align: center;
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   margin-left: 10%;
 }
 
 header {
   position: fixed;
   top: 0;
-  width: 80%;
+  width: 100%;
   height: 60px;
-  background-color: #ffffff;
-  border-top: 1px solid #ccc;
+  background-color: #eddbc7;
+  border-radius: 15px;
   padding: 10px;
   text-align: center;
   margin-bottom: 0;
-  margin-left: 30px;
+  z-index: 1;
 }
 
 main {
   width: 100%;
   box-sizing: border-box;
   margin-top: 60px;
-  margin-left: 30px;
 }
 ul {
   list-style: none;
@@ -63,14 +48,13 @@ ul {
   overflow: hidden;
 } */
 .navbar {
-  margin: 5px;
   background-color: #cc7676;
   width: 10%;
   height: 100%;
   position: fixed;
-  margin: 10px;
-  border-radius: 15px;
 
+  border-radius: 15px;
+  z-index: 999;
   box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.25);
 }
 .navlist ul {
@@ -114,4 +98,37 @@ ul {
 .nav-list {
   width: 100%;
   height: 85%;
+}
+
+table {
+  border: 1px #a39485 solid;
+
+  font-size: 0.9em;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+  width: 60%;
+  border-collapse: collapse;
+  border-radius: 5px;
+  overflow: hidden;
+  margin: auto;
+}
+
+th {
+  text-align: center;
+}
+
+thead {
+  font-weight: bold;
+  color: #fff;
+  background: #73685d;
+}
+
+td,
+th {
+  padding: 1em 0.5em;
+  vertical-align: middle;
+}
+
+td {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  background: #fff;
 }

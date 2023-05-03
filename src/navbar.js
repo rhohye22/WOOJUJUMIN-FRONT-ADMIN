@@ -26,27 +26,32 @@ function Navbar() {
         <ul className="nav-menu">
           <li>
             <Link to="/main" className={location.pathname === "/main" ? "active" : ""}>
-              메인
-            </Link>
-          </li>
-          <li>
-            <Link to="/qna-management/allqna" className={location.pathname === "/qna-management/allqna" ? "active" : ""}>
-              Q&A관리
-            </Link>
-          </li>
-          <li>
-            <Link to={`/calendar/${ryear}/${rmonth}/${ryyyymm}`} className={location.pathname.startsWith("/calendar") ? "active" : ""}>
-              일정관리
-            </Link>
-          </li>
-          <li>
-            <Link to="/bbs-management/partybbs" className={location.pathname === "/bbs-management/partybbs" ? "active" : ""}>
-              게시판관리
+              메인페이지
             </Link>
           </li>
           <li>
             <Link to="/partyleader/" className={location.pathname === "/partyleader/" ? "active" : ""}>
               파티장 승인
+            </Link>
+          </li>
+          <li>
+            <Link to="/bbs-management/partybbs" className={location.pathname === "/bbs-management/partybbs" ? "active" : ""}>
+              게시판 관리
+            </Link>
+          </li>
+          <li>
+            <Link to="/bbs-management/partybbs" className={location.pathname === "/bbs-management/partybbs" ? "active" : ""}>
+              회원 관리
+            </Link>
+          </li>
+          <li>
+            <Link to="/qna-management/allqna" className={location.pathname === "/qna-management/allqna" ? "active" : ""}>
+              Q&A 관리
+            </Link>
+          </li>
+          <li>
+            <Link to={`/calendar/${ryear}/${rmonth}/${ryyyymm}`} className={location.pathname.startsWith("/calendar") ? "active" : ""}>
+              일정 관리
             </Link>
           </li>
         </ul>
