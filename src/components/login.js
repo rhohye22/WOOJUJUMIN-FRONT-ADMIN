@@ -62,19 +62,21 @@ function Login() {
   );
 
   return (
-    <div>
-      <h3>Login</h3>
-      <input value={id} onChange={(e) => setId(e.target.value)} placeholder="아이디" />
-      <br />
-      <input type="password" value={pwd} onChange={(e) => setPwd(e.target.value)} placeholder="패스워드" />
-      <br />
-      <input type="checkbox" checked={saveId} onChange={CheckHandler} />
-      아이디저장
-      <br />
-      <br />
-      <button onClick={() => login()}>Login</button>&nbsp;
-      <a href="/regi">회원가입</a>
-    </div>
+    <>
+      <div className="loginbox">
+        <h3>Login</h3>
+        <input value={id} onChange={(e) => setId(e.target.value)} placeholder="아이디" />
+        <br />
+        <input type="password" value={pwd} onChange={(e) => setPwd(e.target.value)} placeholder="패스워드" />
+        <br />
+        <input type="checkbox" checked={saveId} onChange={CheckHandler} />
+        아이디저장
+        <br />
+        <br />
+        <button onClick={() => login()}>Login</button>&nbsp;
+        <a href="/regi">회원가입</a>
+      </div>
+    </>
   );
 }
 

@@ -25,8 +25,8 @@ function RegimemRecent30days() {
   return (
     <div style={{ fontFamily: "sans-serif", textAlign: "center", fontSize: "13px" }}>
       <AreaChart
-        width={600}
-        height={300}
+        width={400}
+        height={200}
         data={list}
         margin={{
           top: 10,
