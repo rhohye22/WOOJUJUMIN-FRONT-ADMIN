@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip } from "recharts";
 
-function FreebbsRecent7days() {
+function PartybbsRecent7days() {
   const [list, setList] = useState([]);
 
   function cntByDays() {
     axios
-      .get("http://localhost:3000/cntBbsDays")
+      .get("http://localhost:3000/cntFbsDays")
       .then(function (resp) {
         console.log(resp.data);
         setList(resp.data);
@@ -41,9 +41,9 @@ function FreebbsRecent7days() {
         <Tooltip />
         <Area type="monotone" dataKey="count" stroke="#8884d8" fill="#8884d8" />
       </AreaChart>
-      <p>최근 7일간 자유게시판 등록건수</p>
+      <p>최근 7일간 모집게시판 등록건수</p>
     </div>
   );
 }
 
-export default FreebbsRecent7days;
+export default PartybbsRecent7days;

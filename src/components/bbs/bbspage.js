@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Partybbs from "./partybbs";
 import Freebbs from "./freebbs";
 import Spam from "./spam";
+import Comment from "./comment";
 import "./bbs.css";
 
 function Bbspage() {
@@ -39,6 +40,7 @@ function Bbspage() {
           <Route path="partybbs/*" element={<Partybbs />} />
           <Route path="freebbs/*" element={<Freebbs />} />
           <Route path="spam/*" element={<Spam />} />
+          <Route path="comment/*" element={<Comment />} />
         </Routes>
       </div>
     </div>

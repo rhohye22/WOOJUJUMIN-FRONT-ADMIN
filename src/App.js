@@ -47,10 +47,10 @@ function App() {
       <BrowserRouter>
         <Navbar />
 
-        <div className="basepage1">
+        <div className="basepage">
           <header>
-            <Link to="/main">메인</Link>&nbsp;&nbsp;&nbsp;
-            {log ? <Link to="/">로그인</Link> : <button onClick={loghandle}>로그아웃</button>}
+            {/*  <Link to="/main">메인</Link>&nbsp;&nbsp;&nbsp; */}
+            {log ? null : <button onClick={loghandle}>로그아웃</button>}
           </header>
 
           <main>
