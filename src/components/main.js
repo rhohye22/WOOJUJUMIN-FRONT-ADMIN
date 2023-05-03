@@ -9,6 +9,7 @@ import board from "./image/free-icon-board-8224872.png";
 
 import FreebbsRecent7days from "./graph/freebbsRecent7days";
 import RegimemRecent30days from "./graph/regimemRecent30days";
+import PartybbsRecent7days from "./graph/partybbsRecent7days";
 import "./style.css";
 function Main() {
   let { ryear, rmonth, ryyyymm } = useParams();
@@ -68,6 +69,9 @@ function Main() {
       </div>
       <div className="menucontainerBottom">
         <RegimemRecent30days /> <FreebbsRecent7days />
+        <PartybbsRecent7days />
+        <RegimemRecent30days /> <FreebbsRecent7days />
+        <PartybbsRecent7days />
       </div>
     </>
   );
