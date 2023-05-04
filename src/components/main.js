@@ -33,7 +33,7 @@ function Main() {
           <p>파티장승인</p>
         </div>
         <div className="menuicon">
-          <a href="/bbs-management">
+          <a href="/bbs-management/partybbs">
             <div className="background">
               <img className="mainmenu" src={board} alt="My Image" />
             </div>

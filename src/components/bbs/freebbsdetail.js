@@ -67,12 +67,10 @@ function FreeBbsDetail() {
           <tr>
             <th>제목</th>
             <td>{freebbs.title}</td>
-            <th>조회수</th>
-            <td>dma</td>
-          </tr>
-          <tr>
             <th>작성자</th>
             <td>{freebbs.id}</td>
+          </tr>
+          <tr>
             <th>작성시간</th>
             <td>{freebbs.wdate}</td>
           </tr>

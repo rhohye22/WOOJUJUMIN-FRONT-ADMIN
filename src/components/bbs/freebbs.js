@@ -98,39 +98,39 @@ function Freebbs() {
           검색
         </Button>
         <br /> <br />
-        <Button variant="info" size="sm" value={""} onClick={(e) => setTag(e.target.value)}>
+        <Button variant="outline-secondary" size="sm" value={""} onClick={(e) => setTag(e.target.value)}>
           전체
         </Button>
-        &nbsp;
-        <Button variant="info" size="sm" value={10} onClick={(e) => setTag(e.target.value)}>
+        &nbsp;&nbsp;
+        <Button variant="outline-secondary" size="sm" value={10} onClick={(e) => setTag(e.target.value)}>
           잡담
         </Button>
-        &nbsp;
-        <Button variant="info" size="sm" value={1} onClick={(e) => setTag(e.target.value)}>
+        &nbsp;&nbsp;
+        <Button variant="outline-secondary" size="sm" value={1} onClick={(e) => setTag(e.target.value)}>
           농구
         </Button>
-        &nbsp;
-        <Button variant="info" size="sm" value={2} onClick={(e) => setTag(e.target.value)}>
+        &nbsp;&nbsp;
+        <Button variant="outline-secondary" size="sm" value={2} onClick={(e) => setTag(e.target.value)}>
           축구
         </Button>
-        &nbsp;
-        <Button variant="info" size="sm" value={3} onClick={(e) => setTag(e.target.value)}>
+        &nbsp;&nbsp;
+        <Button variant="outline-secondary" size="sm" value={3} onClick={(e) => setTag(e.target.value)}>
           야구
         </Button>
-        &nbsp;
-        <Button variant="info" size="sm" value={4} onClick={(e) => setTag(e.target.value)}>
+        &nbsp;&nbsp;
+        <Button variant="outline-secondary" size="sm" value={4} onClick={(e) => setTag(e.target.value)}>
           예능
         </Button>
-        &nbsp;
-        <Button variant="info" size="sm" value={5} onClick={(e) => setTag(e.target.value)}>
+        &nbsp;&nbsp;
+        <Button variant="outline-secondary" size="sm" value={5} onClick={(e) => setTag(e.target.value)}>
           드라마/영화
         </Button>
-        &nbsp;
-        <Button variant="info" size="sm" value={6} onClick={(e) => setTag(e.target.value)}>
+        &nbsp;&nbsp;
+        <Button variant="outline-secondary" size="sm" value={6} onClick={(e) => setTag(e.target.value)}>
           게임
         </Button>
-        &nbsp;
-        <Button variant="info" size="sm" value={7} onClick={(e) => setTag(e.target.value)}>
+        &nbsp;&nbsp;
+        <Button variant="outline-secondary" size="sm" value={7} onClick={(e) => setTag(e.target.value)}>
           음식
         </Button>
         &nbsp;
@@ -154,6 +154,7 @@ function Freebbs() {
               <th>작성일</th>
               <th>조회수</th>
               <th>좋아요</th>
+              <th>노출상태</th>
             </tr>
           </thead>
           <tbody>
@@ -191,11 +192,22 @@ function Freebbs() {
                     <td>{free.wdate.substring(0, 10)}</td>
                     <td>{free.readcount}</td>
                     <td>{free.likey}</td>
-                    <td>
-                      <Button variant="danger" size="sm" onClick={() => navigate(`${free.bbsSeq}`)}>
+                    {free.del == 0 ? (
+                      <td>
+                        {/*  <Button variant="danger" size="sm" onClick={() => navigate(`${free.bbsSeq}`)}>
                         노출관리
-                      </Button>
-                    </td>
+                      </Button> */}
+                        <b>
+                          <p style={{ color: "blue" }}>정상노출</p>
+                        </b>
+                      </td>
+                    ) : (
+                      <td>
+                        <b>
+                          <p style={{ color: "red" }}>비노출</p>
+                        </b>
+                      </td>
+                    )}
                   </tr>
                 );
               })
