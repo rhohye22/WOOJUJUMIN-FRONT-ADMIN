@@ -202,9 +202,11 @@ function Freebbs() {
                         </b>
                       </td>
                     ) : (
-                      <b>
-                        <p style={{ color: "red" }}>비노출</p>
-                      </b>
+                      <td>
+                        <b>
+                          <p style={{ color: "red" }}>비노출</p>
+                        </b>
+                      </td>
                     )}
                   </tr>
                 );
