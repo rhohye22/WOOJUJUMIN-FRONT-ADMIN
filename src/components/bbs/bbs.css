@@ -53,28 +53,38 @@ ul.pagination li a.active {
   color: #337ab7;
 }
 
-p {
-  margin-top: 16px; /* 초기값으로 설정 */
-}
-
 .bbspage {
   position: fixed;
   width: 90%;
   height: 90%;
   /*  height: calc(100vh - 10px); */
 }
-.qbbsnav {
-  height: 50px;
-  /*  position: fixed; */
-  width: 100%;
+.bbsnav {
+  padding: 10px;
+  height: 45px;
 }
+.bbsnav a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #938e8e;
+  padding: 10px;
+  /*   border-radius: 5px; */
+}
+
+.bbsnav a.active {
+  background-color: #f9f9f9;
+  border: 3px solid #a9a2a2;
+  color: #312f2f;
+}
+
 .bbscontent {
   padding-top: 15px;
   /*  background-color: rgb(238, 241, 243); */
   display: flex;
   /*  padding-top: 50px; */
-  width: 95%;
-  height: 95%;
+  width: 99%;
+  height: 99%;
+  background-color: #f9f9f9;
 }
 .bbspageLeft {
   width: 50%;
@@ -94,4 +104,53 @@ p {
 
 textarea {
   resize: none;
+}
+.spampage {
+  /*  background-color: aquamarine; */
+  display: flex;
+  width: 100vw;
+}
+.spampageLeft {
+  /*  background-color: bisque; */
+  width: 20%;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+.spamwordtable {
+  width: 100%;
+  height: 80%;
+  overflow-y: scroll;
+  position: relative;
+}
+.spamwordtable table {
+  width: 100%;
+}
+.inputspamword {
+  /*   background-color: aqua; */
+  height: 20%;
+  justify-content: center;
+  align-items: center;
+}
+.inputspamword table {
+  width: 100%;
+  height: 100%;
+}
+.spampageMidle {
+  /*   background-color: #337ab7; */
+  width: 40%;
+  overflow-y: scroll;
+}
+.spampageMidle table {
+  width: 90%;
+}
+.spampageRight {
+  /* 
+  background-color: #a8ad84; */
+  width: 40%;
+  overflow-y: scroll;
+}
+.spampageRight table {
+  width: 90%;
 }

@@ -16,40 +16,36 @@ function Qnapage() {
     navigate(route);
   }
 
-  function isButtonActive(path) {
-    return location.pathname.includes(path);
-  }
-
   return (
     <div className="qnapage">
       <div className="qnanav" style={{ textAlign: "left" }}>
-        <button className={"btn btn-primary" + (isButtonActive("allqna") ? " active" : "")} onClick={() => handleNavigation("allqna")}>
+        <Link className={` ${location.pathname.includes("allqna") ? "active" : ""}`} to="allqna">
           질문 전체
-        </button>
+        </Link>
         &nbsp;&nbsp;&nbsp;
-        <button className={"btn btn-primary" + (isButtonActive("memberqna") ? " active" : "")} onClick={() => handleNavigation("memberqna")}>
+        <Link className={` ${location.pathname.includes("memberqna") ? "active" : ""}`} to="memberqna">
           회원관리
-        </button>
+        </Link>
         &nbsp;&nbsp;&nbsp;
-        <button className={"btn btn-primary" + (isButtonActive("bbsrqna") ? " active" : "")} onClick={() => handleNavigation("bbsrqna")}>
+        <Link className={` ${location.pathname.includes("bbsrqna") ? "active" : ""}`} to="bbsrqna">
           게시글관리
-        </button>
+        </Link>
         &nbsp;&nbsp;&nbsp;
-        <button className={"btn btn-primary" + (isButtonActive("partyqna") ? " active" : "")} onClick={() => handleNavigation("partyqna")}>
+        <Link className={` ${location.pathname.includes("partyqna") ? "active" : ""}`} to="partyqna">
           파티관리
-        </button>
+        </Link>
         &nbsp;&nbsp;&nbsp;
-        <button className={"btn btn-primary" + (isButtonActive("errorqna") ? " active" : "")} onClick={() => handleNavigation("errorqna")}>
+        <Link className={` ${location.pathname.includes("errorqna") ? "active" : ""}`} to="commerrorqnaent">
           오류신고
-        </button>
+        </Link>
         &nbsp;&nbsp;&nbsp;
-        <button className={"btn btn-primary" + (isButtonActive("etcqna") ? " active" : "")} onClick={() => handleNavigation("etcqna")}>
+        <Link className={` ${location.pathname.includes("etcqna") ? "active" : ""}`} to="etcqna">
           기타
-        </button>
+        </Link>
         &nbsp;&nbsp;&nbsp;
-        <button className={"btn btn-primary" + (isButtonActive("completedqna") ? " active" : "")} onClick={() => handleNavigation("completedqna")}>
+        <Link className={` ${location.pathname.includes("completedqna") ? "active" : ""}`} to="completedqna">
           답변 완료◦수정
-        </button>
+        </Link>
       </div>
       <div className="qnacontent">
         <Routes>
