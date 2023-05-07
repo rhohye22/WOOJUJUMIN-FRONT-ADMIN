@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route, Link, useParams } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link, useParams, useNavigate } from "react-router-dom";
 
 import member from "./image/free-icon-group-users-4121044.png";
 import qna from "./image/free-icon-letter-q-7336374.png";
@@ -12,6 +12,20 @@ import RegimemRecent30days from "./graph/regimemRecent30days";
 import PartybbsRecent7days from "./graph/partybbsRecent7days";
 import "./style.css";
 function Main() {
+  const navigate = useNavigate();
+  const [id, setId] = useState("");
+
+  const isLogin = localStorage.getItem("login");
+  useEffect(() => {
+    if (isLogin == null) {
+      alert("로그인해 주십시오");
+      navigate("/"); // 로그인 페이지로 이동
+    } else {
+      const login = JSON.parse(isLogin);
+      setId(login.id);
+    }
+  }, [navigate, isLogin]);
+
   let { ryear, rmonth, ryyyymm } = useParams();
 
   if (typeof ryear === "undefined" || typeof rmonth === "undefined" || typeof ryyyymm === "undefined") {
@@ -41,7 +55,7 @@ function Main() {
           <p>게시판관리</p>
         </div>
         <div className="menuicon">
-          <a href="#">
+          <a href="/member-management/normal">
             <div className="background">
               <img className="mainmenu" src={member} alt="My Image" />
             </div>

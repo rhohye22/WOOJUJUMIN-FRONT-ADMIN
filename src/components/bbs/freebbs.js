@@ -194,17 +194,20 @@ function Freebbs() {
                     <td>{free.likey}</td>
                     {free.del == 0 ? (
                       <td>
-                        {/*  <Button variant="danger" size="sm" onClick={() => navigate(`${free.bbsSeq}`)}>
-                        노출관리
-                      </Button> */}
                         <b>
                           <p style={{ color: "blue" }}>정상노출</p>
+                        </b>
+                      </td>
+                    ) : free.del == 1 ? (
+                      <td>
+                        <b>
+                          <p style={{ color: "red" }}>작성자가 삭제</p>
                         </b>
                       </td>
                     ) : (
                       <td>
                         <b>
-                          <p style={{ color: "red" }}>비노출</p>
+                          <p style={{ color: "purple" }}>관리자가 숨김</p>
                         </b>
                       </td>
                     )}
