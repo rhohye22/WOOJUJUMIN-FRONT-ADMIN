@@ -65,16 +65,27 @@ function Login() {
     <>
       <div className="loginbox">
         <h3>Login</h3>
-        <input value={id} onChange={(e) => setId(e.target.value)} placeholder="아이디" />
         <br />
-        <input type="password" value={pwd} onChange={(e) => setPwd(e.target.value)} placeholder="패스워드" />
+        <br />
+        <form class="form-floating">
+          <input type="text" class="form-control" id="floatingInputValue" value={id} onChange={(e) => setId(e.target.value)} />
+          <label for="floatingInputValue">ID</label>
+        </form>
+        <br />
+        <form class="form-floating">
+          <input type="password" class="form-control" id="floatingInputValue" value={pwd} onChange={(e) => setPwd(e.target.value)} />
+          <label for="floatingInputValue">PWD</label>
+        </form>
         <br />
         <input type="checkbox" checked={saveId} onChange={CheckHandler} />
         아이디저장
         <br />
         <br />
-        <button onClick={() => login()}>Login</button>&nbsp;
-        <a href="/regi">회원가입</a>
+        <button type="button" class="btn btn-secondary" onClick={() => login()}>
+          Login
+        </button>
+        &nbsp;&nbsp;&nbsp;
+        <a href="/regi">관리자등록</a>
       </div>
     </>
   );

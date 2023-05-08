@@ -140,17 +140,26 @@ textarea {
 .spampageMidle {
   /*   background-color: #337ab7; */
   width: 40%;
+}
+.spampageMidle1 {
+  height: 50%;
   overflow-y: scroll;
+}
+.spampageMidle1 table {
+  width: 90%;
+}
+.spampageMidle2 {
+  height: 50%;
+  overflow-y: scroll;
+}
+.spampageMidle2 table {
+  width: 90%;
 }
 .spampageMidle table {
   width: 90%;
 }
 .spampageRight {
-  /* 
-  background-color: #a8ad84; */
+  /*   background-color: #a8ad84; */
   width: 40%;
   overflow-y: scroll;
-}
-.spampageRight table {
-  width: 90%;
 }

@@ -10,11 +10,20 @@ import "./bbs.css";
 
 function Bbspage() {
   const navigate = useNavigate();
-  const location = useLocation(); // 현재 위치 정보를 가져오기 위해 useLocation 훅을 사용합니다.
+  const [id, setId] = useState("");
 
-  function handleNavigation(route) {
-    navigate(route);
-  }
+  const isLogin = localStorage.getItem("login");
+  useEffect(() => {
+    if (isLogin == null) {
+      alert("로그인해 주십시오");
+      navigate("/"); // 로그인 페이지로 이동
+    } else {
+      const login = JSON.parse(isLogin);
+      setId(login.id);
+    }
+  }, [navigate, isLogin]);
+
+  const location = useLocation(); // 현재 위치 정보를 가져오기 위해 useLocation 훅을 사용합니다.
 
   return (
     <div className="bbspage">

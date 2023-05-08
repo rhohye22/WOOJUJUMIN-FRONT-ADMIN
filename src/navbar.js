@@ -40,7 +40,7 @@ function Navbar() {
             </Link>
           </li>
           <li>
-            <Link to="/bbs-management/partybbs" className={location.pathname === "/bbs-management/partybbs" ? "active" : ""}>
+            <Link to="/member-management/normal" className={location.pathname === "/member-management" ? "active" : ""}>
               회원 관리
             </Link>
           </li>

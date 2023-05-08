@@ -1,8 +1,10 @@
 import React, { useEffect, useLayoutEffect, useState, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link, useNavigate } from "react-router-dom";
+
 import axios from "axios";
 import Button from "react-bootstrap/Button";
-
+import FreeBbsDetail from "./freebbsdetail";
+import PartyBbsDetail from "./partybbsdetail";
 function Spam() {
   const navigate = useNavigate();
   const [id, setId] = useState("");
@@ -189,66 +191,82 @@ function Spam() {
         </div>
       </div>
       <div className="spampageMidle">
-        <h5>자유게시판</h5>
-        <table>
-          <colgroup>
-            <col width={"80%"} />
-            <col width={"20%"} />
-          </colgroup>
-          <thead>
-            <tr>
-              <th>제목</th>
-              <th>내용보기</th>
-            </tr>
-          </thead>
-          <tbody>
-            {spambbslist && spambbslist.length ? (
-              spambbslist.map(function (spambbs, i) {
-                return (
-                  <tr key={i}>
-                    <td align="left">{spambbs.title.substring(0, 25)}</td>
-                    <td>
-                      <button>보기</button>
-                    </td>
-                  </tr>
-                );
-              })
-            ) : (
-              <td colSpan={2}>의심 게시물이 없습니다</td>
-            )}
-          </tbody>
-        </table>
+        <div className="spampageMidle1">
+          <h5>자유게시판</h5>
+          <table>
+            <colgroup>
+              <col width={"80%"} />
+              <col width={"20%"} />
+            </colgroup>
+            <thead>
+              <tr>
+                <th>제목</th>
+                <th>내용보기</th>
+              </tr>
+            </thead>
+            <tbody>
+              {spambbslist && spambbslist.length ? (
+                spambbslist.map(function (spambbs, i) {
+                  return (
+                    <tr key={i}>
+                      <td align="left">{spambbs.title.substring(0, 25)}</td>
+                      <td>
+                        <Link to={`free/${spambbs.bbsSeq}`}>
+                          <Button variant="outline-secondary" size="sm" utton>
+                            보기
+                          </Button>
+                        </Link>
+                      </td>
+                    </tr>
+                  );
+                })
+              ) : (
+                <td colSpan={2}>의심 게시물이 없습니다</td>
+              )}
+            </tbody>
+          </table>
+        </div>
+        <div className="spampageMidle2">
+          <h5>모집게시판</h5>
+          <table>
+            <colgroup>
+              <col width={"80%"} />
+              <col width={"20%"} />
+            </colgroup>
+            <thead>
+              <tr>
+                <th>제목</th>
+                <th>내용보기</th>
+              </tr>
+            </thead>
+            <tbody>
+              {spampartylist && spampartylist.length ? (
+                spampartylist.map(function (spambbs, i) {
+                  return (
+                    <tr key={i}>
+                      <td align="left">{spambbs.title.substring(0, 25)}</td>
+                      <td>
+                        <Link to={`party/${spambbs.partySeq}`}>
+                          <Button variant="outline-secondary" size="sm">
+                            보기
+                          </Button>
+                        </Link>
+                      </td>
+                    </tr>
+                  );
+                })
+              ) : (
+                <td colSpan={2}>의심 게시물이 없습니다</td>
+              )}
+            </tbody>
+          </table>
+        </div>
       </div>
       <div className="spampageRight">
-        <h5>모집게시판</h5>
-        <table>
-          <colgroup>
-            <col width={"80%"} />
-            <col width={"20%"} />
-          </colgroup>
-          <thead>
-            <tr>
-              <th>제목</th>
-              <th>내용보기</th>
-            </tr>
-          </thead>
-          <tbody>
-            {spampartylist && spampartylist.length ? (
-              spampartylist.map(function (spambbs, i) {
-                return (
-                  <tr key={i}>
-                    <td align="left">{spambbs.title.substring(0, 25)}</td>
-                    <td>
-                      <button>보기</button>
-                    </td>
-                  </tr>
-                );
-              })
-            ) : (
-              <td colSpan={2}>의심 게시물이 없습니다</td>
-            )}
-          </tbody>
-        </table>
+        <Routes>
+          <Route path="free/:bbsSeq" element={<FreeBbsDetail />} />
+          <Route path="party/:partySeq" element={<PartyBbsDetail />} />
+        </Routes>
       </div>
     </div>
   );
