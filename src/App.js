@@ -29,6 +29,7 @@ function App() {
   // 로그인 상태 관리
   const [log, setLog] = useState(null);
   const [login, setLogin] = useState({});
+  const [profile, setProfile] = useState("");
   function loghandle() {
     localStorage.clear();
     document.location.href = "/";
@@ -40,6 +41,7 @@ function App() {
     } else {
       setLog(false);
       setLogin(JSON.parse(localStorage.getItem("login")));
+      setProfile(login.profile);
     }
   }, [log]);
 
@@ -52,7 +54,9 @@ function App() {
           <header>
             {log ? null : (
               <div>
-                <span className="ml-2">관리자 ID : {login.id}</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <span className="ml-2">관리자 ID : {login.id}</span>&nbsp;&nbsp;
+                <img src={`http://localhost:3000/upload/member/${profile}`} style={{ width: "30px", height: "30px", borderRadius: "50%" }} />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <Button variant="outline-dark" size="sm" onClick={loghandle}>
                   로그아웃
                 </Button>
