@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route, Link, useParams } from "react-router-dom";
 
 import "bootstrap/dist/css/bootstrap.min.css";
-
+import Button from "react-bootstrap/Button";
 import Login from "./components/login";
 import Main from "./components/main";
 import Navbar from "./navbar";
@@ -15,7 +15,7 @@ import Calendarwrite from "./components/calendar/calendarwrite";
 import Regi from "./components/regi";
 
 import Qnapage from "./components/qna/qnapage";
-import Member from "./components/member";
+import Mempage from "./components/member/mempage";
 import Bbspage from "./components/bbs/bbspage";
 import Calendardetail from "./components/calendar/calendardetail";
 import CalendarList from "./components/calendar/calendarlist";
@@ -28,7 +28,7 @@ import "./App.css";
 function App() {
   // 로그인 상태 관리
   const [log, setLog] = useState(null);
-
+  const [login, setLogin] = useState({});
   function loghandle() {
     localStorage.clear();
     document.location.href = "/";
@@ -39,6 +39,7 @@ function App() {
       setLog(true);
     } else {
       setLog(false);
+      setLogin(JSON.parse(localStorage.getItem("login")));
     }
   }, [log]);
 
@@ -49,8 +50,14 @@ function App() {
 
         <div className="basepage">
           <header>
-            {/*  <Link to="/main">메인</Link>&nbsp;&nbsp;&nbsp; */}
-            {log ? null : <button onClick={loghandle}>로그아웃</button>}
+            {log ? null : (
+              <div>
+                <span className="ml-2">관리자 ID : {login.id}</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <Button variant="outline-dark" size="sm" onClick={loghandle}>
+                  로그아웃
+                </Button>
+              </div>
+            )}
           </header>
 
           <main>
@@ -67,8 +74,7 @@ function App() {
 
               <Route path="/qna-management/*" element={<Qnapage />} />
               <Route path="/bbs-management/*" element={<Bbspage />} />
-
-              <Route path="/member-management" element={<Member />} />
+              <Route path="/member-management/*" element={<Mempage />} />
 
               <Route path="/partyleader" element={<Partyleader />} />
               <Route path="/mainbutton" element={<Partyrequest />} />

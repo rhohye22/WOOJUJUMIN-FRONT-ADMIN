@@ -12,6 +12,15 @@ function Ansqna() {
   const [id, setId] = useState("");
 
   const isLogin = localStorage.getItem("login");
+  useEffect(() => {
+    if (isLogin == null) {
+      alert("로그인해 주십시오");
+      navigate("/"); // 로그인 페이지로 이동
+    } else {
+      const login = JSON.parse(isLogin);
+      setId(login.id);
+    }
+  }, [navigate, isLogin]);
 
   const [qnalist, setQnalist] = useState([]);
 
@@ -23,16 +32,6 @@ function Ansqna() {
   //
   const simpleBarRef = useRef(null);
   //
-
-  useEffect(() => {
-    if (isLogin == null) {
-      alert("로그인해 주십시오");
-      navigate("/"); // 로그인 페이지로 이동
-    } else {
-      const login = JSON.parse(isLogin);
-      setId(login.id);
-    }
-  }, [navigate, isLogin]);
 
   function getQnalist() {
     if (!isLogin) {
