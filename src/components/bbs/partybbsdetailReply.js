@@ -4,79 +4,45 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
-
-function FreeBbsDetail() {
+import FreeBbsReply from "./freeBbsReply";
+function PartybbsdetailReply() {
   let navigate = useNavigate();
 
   const [freebbs, setFreeBbs] = useState({});
   const [loading, setLoading] = useState(false);
+
+  //댓글
+
   //접속정보
-
   let params = useParams();
+  let partySeq = params.partySeq;
 
-  let bbsSeq = params.bbsSeq;
-
-  const qnaData = async (bbsSeq) => {
-    const response = await axios.get("http://localhost:3000/getfreeBbs", {
-      params: { bbsSeq: bbsSeq },
+  const qnaData = async (partySeq) => {
+    const response = await axios.get("http://localhost:3000/getPartyBbsAdmin", {
+      params: { partySeq: partySeq },
     });
     setFreeBbs(response.data);
     setLoading(true); // 여기서 rendering 해 준다
   };
 
   useEffect(() => {
-    qnaData(params.bbsSeq);
-  }, [params.bbsSeq]);
+    qnaData(params.partySeq);
+  }, [params.partySeq]);
 
   if (loading === false) {
     return <div>Loading...</div>;
   }
 
-  const imageUrl = freebbs.image !== null ? `http://localhost:3000/upload/freebbs/${freebbs.image}` : null;
-
-  //숨기기
-  function delfreebbs() {
-    axios
-      .post("http://localhost:3000/delFreebbsByAdmin", null, {
-        params: { bbsSeq: bbsSeq },
-      })
-      .then((resp) => {
-        if (resp.data === "YES") {
-          alert("숨김처리되었습니다.");
-        } else {
-          alert("숨김실패");
-        }
-      })
-      .catch(function (err) {
-        alert(err);
-      });
-  }
-
-  //노출하기
-  function reopenFreebbs() {
-    axios
-      .post("http://localhost:3000/reopenFreebbsByAdmin", null, {
-        params: { bbsSeq: bbsSeq },
-      })
-      .then((resp) => {
-        if (resp.data === "YES") {
-          alert("노출처리되었습니다");
-        } else {
-          alert("노출실패");
-        }
-      })
-      .catch(function (err) {
-        alert(err);
-      });
-  }
+  const imageUrl = freebbs.image !== null ? `http://localhost:3000/upload/partybbs/${freebbs.image}` : null;
 
   return (
     <div>
       <br />
       <Table responsive>
         <colgroup>
-          <col width={"100px"} />
+          <col width={"80px"} />
           <col width={"500px"} />
+          <col width={"150px"} />
           <col width={"150px"} />
         </colgroup>
         <tbody>
@@ -98,7 +64,7 @@ function FreeBbsDetail() {
                   src={imageUrl}
                   alt="no image"
                   style={{
-                    width: 500,
+                    width: "80%",
                     height: "auto",
                     objectFit: "cover",
                     objectPosition: "center",
@@ -112,17 +78,8 @@ function FreeBbsDetail() {
           </tr>
         </tbody>
       </Table>
-      <Button variant="danger" onClick={() => delfreebbs()}>
-        숨기기
-      </Button>{" "}
-      &nbsp;&nbsp;&nbsp;
-      <Button variant="success" onClick={() => reopenFreebbs()}>
-        노출하기
-      </Button>
-      <br />
-      <br />
     </div>
   );
 }
 
-export default FreeBbsDetail;
+export default PartybbsdetailReply;

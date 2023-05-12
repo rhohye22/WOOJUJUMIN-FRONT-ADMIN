@@ -5,40 +5,41 @@ import { useParams } from "react-router-dom";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 
-function FreeBbsDetail() {
+function PartyBbsDetail() {
   let navigate = useNavigate();
 
   const [freebbs, setFreeBbs] = useState({});
   const [loading, setLoading] = useState(false);
+
+  //댓글
+
   //접속정보
-
   let params = useParams();
+  let partySeq = params.partySeq;
 
-  let bbsSeq = params.bbsSeq;
-
-  const qnaData = async (bbsSeq) => {
-    const response = await axios.get("http://localhost:3000/getfreeBbs", {
-      params: { bbsSeq: bbsSeq },
+  const qnaData = async (partySeq) => {
+    const response = await axios.get("http://localhost:3000/getPartyBbsAdmin", {
+      params: { partySeq: partySeq },
     });
     setFreeBbs(response.data);
     setLoading(true); // 여기서 rendering 해 준다
   };
 
   useEffect(() => {
-    qnaData(params.bbsSeq);
-  }, [params.bbsSeq]);
+    qnaData(params.partySeq);
+  }, [params.partySeq]);
 
   if (loading === false) {
     return <div>Loading...</div>;
   }
 
-  const imageUrl = freebbs.image !== null ? `http://localhost:3000/upload/freebbs/${freebbs.image}` : null;
+  const imageUrl = freebbs.image !== null ? `http://localhost:3000/upload/partybbs/${freebbs.image}` : null;
 
   //숨기기
-  function delfreebbs() {
+  function delPartybbs() {
     axios
-      .post("http://localhost:3000/delFreebbsByAdmin", null, {
-        params: { bbsSeq: bbsSeq },
+      .post("http://localhost:3000/delPartybbsByAdmin", null, {
+        params: { partySeq: partySeq },
       })
       .then((resp) => {
         if (resp.data === "YES") {
@@ -53,10 +54,10 @@ function FreeBbsDetail() {
   }
 
   //노출하기
-  function reopenFreebbs() {
+  function reopenPartybbs() {
     axios
-      .post("http://localhost:3000/reopenFreebbsByAdmin", null, {
-        params: { bbsSeq: bbsSeq },
+      .post("http://localhost:3000/reopenPartybbsByAdmin", null, {
+        params: { partySeq: partySeq },
       })
       .then((resp) => {
         if (resp.data === "YES") {
@@ -75,8 +76,9 @@ function FreeBbsDetail() {
       <br />
       <Table responsive>
         <colgroup>
-          <col width={"100px"} />
+          <col width={"80px"} />
           <col width={"500px"} />
+          <col width={"150px"} />
           <col width={"150px"} />
         </colgroup>
         <tbody>
@@ -112,11 +114,11 @@ function FreeBbsDetail() {
           </tr>
         </tbody>
       </Table>
-      <Button variant="danger" onClick={() => delfreebbs()}>
+      <Button variant="danger" onClick={() => delPartybbs()}>
         숨기기
-      </Button>{" "}
+      </Button>
       &nbsp;&nbsp;&nbsp;
-      <Button variant="success" onClick={() => reopenFreebbs()}>
+      <Button variant="success" onClick={() => reopenPartybbs()}>
         노출하기
       </Button>
       <br />
@@ -125,4 +127,4 @@ function FreeBbsDetail() {
   );
 }
 
-export default FreeBbsDetail;
+export default PartyBbsDetail;

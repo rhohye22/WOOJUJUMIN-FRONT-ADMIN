@@ -4,8 +4,9 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
+import FreeBbsReply from "./freeBbsReply";
 
-function FreeBbsDetail() {
+function FreeBbsDetailReply() {
   let navigate = useNavigate();
 
   const [freebbs, setFreeBbs] = useState({});
@@ -33,42 +34,6 @@ function FreeBbsDetail() {
   }
 
   const imageUrl = freebbs.image !== null ? `http://localhost:3000/upload/freebbs/${freebbs.image}` : null;
-
-  //숨기기
-  function delfreebbs() {
-    axios
-      .post("http://localhost:3000/delFreebbsByAdmin", null, {
-        params: { bbsSeq: bbsSeq },
-      })
-      .then((resp) => {
-        if (resp.data === "YES") {
-          alert("숨김처리되었습니다.");
-        } else {
-          alert("숨김실패");
-        }
-      })
-      .catch(function (err) {
-        alert(err);
-      });
-  }
-
-  //노출하기
-  function reopenFreebbs() {
-    axios
-      .post("http://localhost:3000/reopenFreebbsByAdmin", null, {
-        params: { bbsSeq: bbsSeq },
-      })
-      .then((resp) => {
-        if (resp.data === "YES") {
-          alert("노출처리되었습니다");
-        } else {
-          alert("노출실패");
-        }
-      })
-      .catch(function (err) {
-        alert(err);
-      });
-  }
 
   return (
     <div>
@@ -98,7 +63,7 @@ function FreeBbsDetail() {
                   src={imageUrl}
                   alt="no image"
                   style={{
-                    width: 500,
+                    width: "80%",
                     height: "auto",
                     objectFit: "cover",
                     objectPosition: "center",
@@ -112,17 +77,8 @@ function FreeBbsDetail() {
           </tr>
         </tbody>
       </Table>
-      <Button variant="danger" onClick={() => delfreebbs()}>
-        숨기기
-      </Button>{" "}
-      &nbsp;&nbsp;&nbsp;
-      <Button variant="success" onClick={() => reopenFreebbs()}>
-        노출하기
-      </Button>
-      <br />
-      <br />
     </div>
   );
 }
 
-export default FreeBbsDetail;
+export default FreeBbsDetailReply;

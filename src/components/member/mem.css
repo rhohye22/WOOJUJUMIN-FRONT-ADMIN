@@ -1,19 +1,14 @@
-.qnapage {
+.mempage {
   position: fixed;
   width: 90%;
   height: 90%;
   /*  height: calc(100vh - 10px); */
 }
-.qnanav {
-  height: 50px;
-  /*  position: fixed; */
-  width: 100%;
-}
-.qnanav {
+.memnav {
   padding: 10px;
   height: 45px;
 }
-.qnanav a {
+.memnav a {
   text-decoration: none;
   font-weight: bold;
   color: #938e8e;
@@ -21,31 +16,33 @@
   /*   border-radius: 5px; */
 }
 
-.qnanav a.active {
+.memnav a.active {
   background-color: #f9f9f9;
   border: 3px solid #a9a2a2;
   color: #312f2f;
 }
 
-.qnacontent {
+.memcontent {
+  padding-top: 15px;
   /*  background-color: rgb(238, 241, 243); */
   display: flex;
   /*  padding-top: 50px; */
-  width: 95%;
-  height: 95%;
+  width: 99%;
+  height: 99%;
+  background-color: #f9f9f9;
 }
-.qnapageLeft {
-  width: 45%;
+.mempageLeft {
+  width: 70%;
   height: 100%;
   padding: 30px;
   overflow-y: scroll;
 }
-.qnapageRight {
-  width: 55%;
+.mempageLeft table {
+  width: 100%;
+}
+.mempageRight {
+  width: 30%;
   height: 100%;
   padding: 30px;
-}
-
-textarea {
-  resize: none;
+  overflow-y: scroll;
 }

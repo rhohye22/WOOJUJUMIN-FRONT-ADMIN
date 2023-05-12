@@ -30,22 +30,22 @@ function Navbar() {
             </Link>
           </li>
           <li>
-            <Link to="/partyleader/" className={location.pathname === "/partyleader/" ? "active" : ""}>
+            <Link to="/partyleader/" className={location.pathname.startsWith("/partyleader") ? "active" : ""}>
               파티장 승인
             </Link>
           </li>
           <li>
-            <Link to="/bbs-management/partybbs" className={location.pathname === "/bbs-management/partybbs" ? "active" : ""}>
+            <Link to="/bbs-management/spam" className={location.pathname.startsWith("/bbs-management") ? "active" : ""}>
               게시판 관리
             </Link>
           </li>
           <li>
-            <Link to="/bbs-management/partybbs" className={location.pathname === "/bbs-management/partybbs" ? "active" : ""}>
+            <Link to="/member-management/normal" className={location.pathname.startsWith("/member-management") ? "active" : ""}>
               회원 관리
             </Link>
           </li>
           <li>
-            <Link to="/qna-management/allqna" className={location.pathname === "/qna-management/allqna" ? "active" : ""}>
+            <Link to="/qna-management/allqna" className={location.pathname.startsWith("/qna-management") ? "active" : ""}>
               Q&A 관리
             </Link>
           </li>
