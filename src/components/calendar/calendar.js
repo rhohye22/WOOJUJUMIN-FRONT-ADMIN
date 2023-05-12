@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Ink from "../image/ink.png";
 import Table from "react-bootstrap/Table";
 import backmonth from "../image/backmonth.png";
@@ -71,6 +71,7 @@ function Calendar() {
         });
     };
 
+
     // async function cntData(){      
     //   for (let i = 1; i <= lastday; i++) {
     //     let ymd = year + charTwo(month) + charTwo(i);
@@ -125,6 +126,19 @@ function Calendar() {
     cntData();
     console.log("배열확인용", listcnt); // 배열이 업데이트될 때마다 호출
   }, [lastday]);
+
+
+  const navigate = useNavigate();
+  const isLogin = JSON.parse(localStorage.getItem("login"));
+
+  useEffect(() => {
+    if (isLogin === null) {
+      alert("로그인해 주십시오");
+      navigate("/"); // 로그인 페이지로 이동
+    } else {
+      // const login = JSON.parse(isLogin);
+    }
+  }, [navigate, isLogin]);
 
   // useEffect(()=>{
   //   const listcount = async ()=>{
@@ -297,7 +311,7 @@ function Calendar() {
 
       if (listcnt[i - 1] > 5) {
         tableList.push(
-          <p style={{margin:"0", padding:"0", textAlign:"center"}}><b>:</b></p>
+          <p style={{ margin: "0", padding: "0", textAlign: "center" }}><b>:</b></p>
         );
       }
 
@@ -336,7 +350,7 @@ function Calendar() {
   };
 
   return (
-    <div style={{width:"1400px", margin:"0 auto"}}>
+    <div style={{ width: "1400px", margin: "0 auto" }}>
       <h3>일정 등록</h3>
       <div>
         <Table responsive className="finalCal">

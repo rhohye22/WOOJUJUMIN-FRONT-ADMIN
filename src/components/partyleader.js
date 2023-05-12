@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Modal from 'react-modal';
 import { Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 
 function Partyleader() {
@@ -49,6 +50,18 @@ function Partyleader() {
     }, []);
 
 
+    const navigate = useNavigate();
+    const isLogin = JSON.parse(localStorage.getItem("login"));
+
+    useEffect(() => {
+        if (isLogin === null) {
+            alert("로그인해 주십시오");
+            navigate("/"); // 로그인 페이지로 이동
+        } else {
+            // const login = JSON.parse(isLogin);
+        }
+    }, [navigate, isLogin]);
+    
     function check() {
 
 
@@ -57,15 +70,15 @@ function Partyleader() {
             // alert("?");
 
             axios.post("http://localhost:3000/partyleadersuccess", null, { params: { "memid": memid } })
-            .then(function (res) {
-                if(res.data === "YES"){
-                    alert("파티장으로 수락했습니다.");
-                    window.location.reload();
-                }
-            })
-            .catch(function (err) {
-                alert(err);
-            })
+                .then(function (res) {
+                    if (res.data === "YES") {
+                        alert("파티장으로 수락했습니다.");
+                        window.location.reload();
+                    }
+                })
+                .catch(function (err) {
+                    alert(err);
+                })
         };
 
 
@@ -75,15 +88,15 @@ function Partyleader() {
             // alert("?");
 
             axios.post("http://localhost:3000/partyleaderreject", null, { params: { "memid": memid } })
-            .then(function (res) {
-                if(res.data){
-                    alert("파티장 신청을 거절했습니다.");
-                    window.location.reload();
-                }
-            })
-            .catch(function (err) {
-                alert(err);
-            })
+                .then(function (res) {
+                    if (res.data) {
+                        alert("파티장 신청을 거절했습니다.");
+                        window.location.reload();
+                    }
+                })
+                .catch(function (err) {
+                    alert(err);
+                })
         };
 
 
@@ -103,8 +116,8 @@ function Partyleader() {
                         content={modalcontent} closeModal={closeModal} />
                 </td>
                 <td>
-                    <Button  variant="success" onClick={() => partyleadersuccess(index, list.memid)} >승인</Button>
-                    <Button  variant="danger" onClick={() => partyleaderfail(index, list.memid)} style={{marginLeft:"10px"}}>거절</Button>
+                    <Button variant="success" onClick={() => partyleadersuccess(index, list.memid)} >승인</Button>
+                    <Button variant="danger" onClick={() => partyleaderfail(index, list.memid)} style={{ marginLeft: "10px" }}>거절</Button>
                     {/* <button type="button" onClick={() => partyleadersuccess(index, list.memid)}>YES</button> */}
                     {/* <button type="button" onClick={() => partyleaderfail(index, list.memid)}>NO</button> */}
                 </td>
@@ -221,7 +234,7 @@ function Partyleader() {
 
     return (
         <div>
-            <h3 style={{fontWeight:"bold"}}>파티장 승급 요청</h3>
+            <h3 style={{ fontWeight: "bold" }}>파티장 승급 요청</h3>
 
             {check()}
 
