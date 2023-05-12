@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Modal from 'react-modal';
+import { Button } from "react-bootstrap";
 
 
 function Partyleader() {
@@ -57,8 +58,10 @@ function Partyleader() {
 
             axios.post("http://localhost:3000/partyleadersuccess", null, { params: { "memid": memid } })
             .then(function (res) {
-                alert(res.data);
-                window.location.reload();
+                if(res.data === "YES"){
+                    alert("파티장으로 수락했습니다.");
+                    window.location.reload();
+                }
             })
             .catch(function (err) {
                 alert(err);
@@ -66,15 +69,17 @@ function Partyleader() {
         };
 
 
-        // 나중에 2로 변경하고 승인 거절된 것을 알림으로 알려주기
+        // 2로 변경하고 승인 거절
         const partyleaderfail = (rowIndex, memid) => {
             console.log(`Button in row ${rowIndex} clicked!`);
             // alert("?");
 
-            axios.post("http://localhost:3000/partyleadersuccess", null, { params: { "memid": memid } })
+            axios.post("http://localhost:3000/partyleaderreject", null, { params: { "memid": memid } })
             .then(function (res) {
-                alert(res.data);
-                window.location.reload();
+                if(res.data){
+                    alert("파티장 신청을 거절했습니다.");
+                    window.location.reload();
+                }
             })
             .catch(function (err) {
                 alert(err);
@@ -98,8 +103,10 @@ function Partyleader() {
                         content={modalcontent} closeModal={closeModal} />
                 </td>
                 <td>
-                    <button type="button" onClick={() => partyleadersuccess(index, list.memid)}>YES</button>
-                    <button type="button" onClick={() => partyleaderfail(index, list.memid)}>NO</button>
+                    <Button  variant="success" onClick={() => partyleadersuccess(index, list.memid)} >승인</Button>
+                    <Button  variant="danger" onClick={() => partyleaderfail(index, list.memid)} style={{marginLeft:"10px"}}>거절</Button>
+                    {/* <button type="button" onClick={() => partyleadersuccess(index, list.memid)}>YES</button> */}
+                    {/* <button type="button" onClick={() => partyleaderfail(index, list.memid)}>NO</button> */}
                 </td>
             </tr>
         ));
@@ -166,7 +173,7 @@ function Partyleader() {
     const InfoModal = (props) => {
         const selectedData = modalcontent[selectedIdx] || null;
         return (
-            <Modal isOpen={props.isOpen}>
+            <Modal className="modalcss" isOpen={props.isOpen}>
                 <h2>{props.title}</h2>
                 <p>{selectedData && selectedData}</p>
                 <button onClick={props.closeModal}>Close</button>
@@ -214,7 +221,7 @@ function Partyleader() {
 
     return (
         <div>
-            <h3>여기는 파티장 승급 페이지!!</h3>
+            <h3 style={{fontWeight:"bold"}}>파티장 승급 요청</h3>
 
             {check()}
 

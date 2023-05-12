@@ -7,6 +7,9 @@ import backmonth from "../image/backmonth.png";
 import backyear from "../image/backyear.png";
 import nextyear from "../image/nextyear.png";
 import nextmonth from "../image/nextmonth.png";
+import Pen from "../image/insertPen.png";
+
+
 
 function Calendar() {
   let { ryear, rmonth, ryyyymm } = useParams();
@@ -24,9 +27,9 @@ function Calendar() {
     ryyyymm = rmonth + currentDay;
   }
 
-  console.log(ryear);
-  console.log(rmonth);
-  console.log(ryyyymm);
+  // console.log(ryear);
+  // console.log(rmonth);
+  // console.log(ryyyymm);
   const [year, setYear] = useState("");
   const [month, setMonth] = useState("");
   const [sendYear, setSendYear] = useState(ryear);
@@ -37,6 +40,8 @@ function Calendar() {
   const [yyyymm, setYyyymm] = useState("");
   const [sendyyyymm, setSendyyymm] = useState(ryyyymm);
   const [calendardto, setCalendardto] = useState([]);
+  // const listcnt = [];
+  const [listcnt, setListcnt] = useState([]);
 
   useEffect(() => {
     const fetchData = async (sendYear, sendMonth) => {
@@ -58,14 +63,115 @@ function Calendar() {
           // console.log(lastday);
           setYyyymm(res.data.year + charTwo(res.data.month));
           setCalendardto(res.data.list);
+          // setYyyymmdd(red.data.)
+
         })
         .catch(function (err) {
           alert(err);
         });
     };
 
+    // async function cntData(){      
+    //   for (let i = 1; i <= lastday; i++) {
+    //     let ymd = year + charTwo(month) + charTwo(i);
+    //     await axios.get("http://localhost:3000/listcount", { params: { "rdate": ymd } })
+    //       .then(function (res) {
+    //         console.log(res.data);
+    //         listcnt.push(res.data);
+    //       })
+    //       .catch(function (err) {
+    //         alert(err);
+    //       })
+    //   }
+    // }
+
+    // async function cntData() {
+    //   try {
+    //     for (let i = 1; i <= lastday; i++) {
+    //       let ymd = year + charTwo(month) + charTwo(i);
+    //       const response = await axios.get("http://localhost:3000/listcount", {
+    //         params: { rdate: ymd },
+    //       });
+    //       console.log(response.data);
+    //       listcnt.push(response.data);
+    //     }
+    //   } catch (error) {
+    //     alert(error);
+    //   }
+    // }
+
+
+
     fetchData(sendYear, sendMonth);
-  }, [sendMonth, sendYear, sendyyyymm]);
+
+
+  }, [sendYear, sendMonth, sendyyyymm]);
+
+  useEffect(() => {
+    async function cntData() {
+      try {
+        const updatedListcnt = []; // 업데이트된 배열을 임시로 저장할 변수
+        for (let i = 1; i <= lastday; i++) {
+          let ymd = year + charTwo(month) + charTwo(i);
+          const response = await axios.get("http://localhost:3000/listcount", { params: { rdate: ymd } });
+          console.log(response.data);
+          updatedListcnt.push(response.data);
+        }
+        setListcnt(updatedListcnt); // 배열 상태 업데이트
+      } catch (error) {
+        alert(error);
+      }
+    }
+    cntData();
+    console.log("배열확인용", listcnt); // 배열이 업데이트될 때마다 호출
+  }, [lastday]);
+
+  // useEffect(()=>{
+  //   const listcount = async ()=>{
+  //     await axios.get("http://localhost:3000/listcount", {params:{"rdate":yyyymmdd}})
+  //     .then(function(res){
+  //       alert("확인");
+  //     })
+  //     .catch(function(err){
+  //       alert(err);
+  //     })
+  //   }
+
+  //   listcount();
+
+
+  // },[])
+
+  // Promise 배열 생성
+  // let promises = [];
+
+
+  // Promise.all을 사용하여 모든 Promise 완료 후에 처리
+  // Promise.all(promises)
+  //   .then(function (responses) {
+  //     // 모든 응답 처리
+  //     responses.forEach(function (res) {
+  //       // console.log(res.data);
+  //       listcnt.push(res.data);
+  //     });
+
+  //     // 완료된 배열 출력
+  //     console.log(listcnt);
+
+  //     return (
+  //       listcnt.map((cnt, i)=>{
+  //         usecnt.push(<b key={i}>{cnt}</b>);
+  //       })
+  //     )
+
+  //   })
+  //   .catch(function (err) {
+  //     alert(err);
+  //   });
+
+
+  // console.log(calendardto + "개수확인");
+
 
   // 전년도
   function prevYear() {
@@ -139,10 +245,33 @@ function Calendar() {
     let arrTop = [];
     let row = [];
 
+
+    // 내가 이동한 월 가져오기
+    const today = new Date(year, month - 1);
+    console.log(today);
+
+    // 현재 월의 첫 날 설정
+    const firstDayOfMonth = new Date(today.getFullYear(), today.getMonth(), 1);
+
+    // 전월의 첫 날 설정
+    const firstDayOfPrevMonth = new Date(firstDayOfMonth.getFullYear(), firstDayOfMonth.getMonth() - 1, 1);
+
+    // 전월의 마지막 날 가져오기
+    const lastDayOfPrevMonth = new Date(firstDayOfPrevMonth.getFullYear(), firstDayOfPrevMonth.getMonth() + 1, 0);
+
+    console.log(lastDayOfPrevMonth.getDate()); // 전월의 마지막 날짜 출력
+
     // 위쪽 빈칸
     for (let i = 1; i < dayOfWeek; i++) {
-      row.push(<td key={i}>빈칸</td>);
+      row.push(<td key={i} style={{ border: "1px solid rgba(0, 0, 0, 0.1)", color: "#a0a0a0", verticalAlign: "top", fontSize: "18px" }}>{lastDayOfPrevMonth.getDate() - dayOfWeek + i + 1}</td>);
     }
+
+    // let minuscnt = 0;
+    // for (let i = dayOfWeek; i > 1; i--) {
+    //   row.push(<td key={i} style={{ border: "1px solid rgba(0, 0, 0, 0.1)" }}>{lastDayOfPrevMonth.getDate()-minuscnt}</td>);
+    //   minuscnt++;
+    //   console.log("마이너스카운트" + minuscnt);
+    // }
 
     // 날짜
     // `/some-url?month=${monthValue}&day=${dayValue}`
@@ -151,13 +280,14 @@ function Calendar() {
         let selDate = year + charTwo(month) + charTwo(i);
 
         return cal.rdate.substring(0, 8) === selDate ? ( // 값이 true일 때 테이블을 출력하도록 설정
-          <table key={index}>
+          <table key={index} className="allList">
             <tbody>
               <tr>
-                <td>
-                  <Link to={`/calendardetail/${cal.calSeq}`}>
-                    {cal.tagName}----{dot3(cal.title)}
+                <td style={{ padding: "5px 5px 5px 0" }}>
+                  <Link to={`/calendardetail/${cal.calSeq}`} >
+                    <span className="tagCss" style={{ padding: "5px", fontWeight: "bold" }}>{cal.tagName}</span> {dot3(cal.title)}
                   </Link>
+                  {/* {listcnt[i - 1] > 5 ? <b>:</b> : null} */}
                 </td>
               </tr>
             </tbody>
@@ -165,12 +295,19 @@ function Calendar() {
         ) : null; // 속성이 false일 경우, null을 반환하여 아무것도 출력하지 않도록 설정
       });
 
+      if (listcnt[i - 1] > 5) {
+        tableList.push(
+          <p style={{margin:"0", padding:"0", textAlign:"center"}}><b>:</b></p>
+        );
+      }
+
       row.push(
-        <td key={i + dayOfWeek - 1}>
-          <Link to={`/calendarlist/${year}${month}${charTwo(i)}`}>{i} </Link>
-          <Link to={`/calendarwrite/${year}/${month}/${i}`}>
-            <img alt="글 쓰기" src={Ink} style={{ width: "20px", height: "25px" }} />
+        <td key={i + dayOfWeek - 1} className="numTop" style={{ border: "1px solid rgba(0, 0, 0, 0.1)" }}>
+          <Link to={`/calendarlist/${year}${month}${charTwo(i)}`} style={{ color: "black", fontSize: "18px" }}>{i} </Link>
+          <Link to={`/calendarwrite/${year}/${month}/${i}`} >
+            <img alt="글 쓰기" src={Pen} style={{ width: "35px", height: "30px" }} />
           </Link>
+          <b style={{ float: "right" }}>{listcnt[i - 1]}개</b>
           {tableList}
         </td>
       );
@@ -186,7 +323,7 @@ function Calendar() {
 
     // 아래쪽 빈칸
     for (let i = 0; i < 7 - weekday; i++) {
-      row.push(<td key={i}>빈칸</td>);
+      row.push(<td key={i} style={{ border: "1px solid rgba(0, 0, 0, 0.1)", color: "#a0a0a0", verticalAlign: "top", fontSize: "18px" }}>{i + 1}</td>);
     }
     let keyVal = 0;
     arrTop.push(
@@ -199,10 +336,10 @@ function Calendar() {
   };
 
   return (
-    <div>
+    <div style={{width:"1400px", margin:"0 auto"}}>
       <h3>일정 등록</h3>
       <div>
-        <Table responsive>
+        <Table responsive className="finalCal">
           <colgroup>
             <col width="100" />
             <col width="100" />
@@ -224,6 +361,7 @@ function Calendar() {
                   </b>
                   <img src={nextmonth} onClick={nextMonth} alt="익월" style={{ height: "40px", width: "auto" }} /> &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
                   <img src={nextyear} onClick={nextYear} alt="내년도" style={{ height: "40px", width: "auto" }} />
+                  <b onClick={todaySet} style={{ marginLeft: "20px" }}>오늘</b>
                 </div>
               </td>
             </tr>

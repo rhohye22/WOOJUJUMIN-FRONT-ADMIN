@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import Button from 'react-bootstrap/Button';
 
 function CalendarList() {
 
@@ -67,7 +68,8 @@ function CalendarList() {
                     }
                 </tbody>
             </table>
-            <button type="button" onClick={calendarlist}>일정 돌아가기</button>
+            <Button variant="primary"  onClick={calendarlist} type="submit" style={{marginTop:"20px", marginLeft:"20px"}}>일정목록</Button>
+            {/* <button type="button" onClick={calendarlist}>일정 돌아가기</button> */}
         </div>
     )
 }

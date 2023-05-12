@@ -126,9 +126,69 @@ td,
 th {
   padding: 1em 0.5em;
   vertical-align: middle;
-}
+} 
 
 td {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   background: #fff;
+}
+
+/* css 추가 230508  */
+/* calendar */
+.allList{
+  width: 100%;
+  box-shadow: none;
+}
+
+.allList td{
+  background: none;
+  border: none;
+}
+.allList a{
+  font-size: 13px;
+}
+.numTop{
+  height: 230px;
+}
+/* calendarwrite */
+.writetable tr{
+  border: 1px solid #e2e2e2;
+}
+.writetable th{
+  width: 150px;
+}
+.writetable td{
+  padding: 15px;
+}
+.writetable select{
+  text-align: left;
+  border: 1px solid #e2e2e2;
+  border-radius: 0.375rem;
+  font-size: 16px;
+  padding: 7px 0;
+
+}
+.datecss{
+  width: 50%;
+  text-align: center;
+  border: 1px solid #e2e2e2;
+  border-radius: 0.375rem;
+  font-size: 16px;
+  padding: 5px 0;
+}
+.react-datepicker-popper{
+  margin-left: 300px;
+}
+.contentcss{
+  height: 400px;
+}
+.ReactModal__Overlay--after-open{
+  width: 1400px;
+  border: 1px solid black;
+  margin:0 auto;
+  height: 600px;
+}
+.modalcss table{
+  width: 1200px;
+  
 }
