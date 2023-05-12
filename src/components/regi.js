@@ -31,9 +31,7 @@ function Regi() {
   //const [visible, setVisible] = useState(false);
 
   // 다음 주소 api
-  const open = useDaumPostcodePopup(
-    "//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"
-  );
+  const open = useDaumPostcodePopup("//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js");
 
   const handleComplete = (data) => {
     let fullAddress = data.address;
@@ -44,8 +42,7 @@ function Regi() {
         extraAddress += data.bname;
       }
       if (data.buildingName !== "") {
-        extraAddress +=
-          extraAddress !== "" ? `, ${data.buildingName}` : data.buildingName;
+        extraAddress += extraAddress !== "" ? `, ${data.buildingName}` : data.buildingName;
       }
       fullAddress += extraAddress !== "" ? ` (${extraAddress})` : "";
     }
@@ -110,42 +107,21 @@ function Regi() {
   return (
     <div>
       <h3>회원가입</h3>
-      <input
-        value={id}
-        onChange={(e) => setId(e.target.value)}
-        placeholder="아이디"
-      />
+      <input value={id} onChange={(e) => setId(e.target.value)} placeholder="아이디" />
       &nbsp;
       <button onClick={idCheck}>id확인</button>
       <br />
       <br />
-      <input
-        type="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        placeholder="비밀번호"
-      />
+      <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="비밀번호" />
       <br />
       <br />
-      <input
-        value={nickname}
-        onChange={(e) => setNickname(e.target.value)}
-        placeholder="닉네임"
-      />
+      <input value={nickname} onChange={(e) => setNickname(e.target.value)} placeholder="닉네임" />
       <br />
       <br />
-      <input
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        placeholder="이메일"
-      />
+      <input value={email} onChange={(e) => setEmail(e.target.value)} placeholder="이메일" />
       <br />
       <br />
-      <input
-        value={phonenum}
-        onChange={(e) => setPhonenum(e.target.value)}
-        placeholder="휴대전화"
-      />
+      <input value={phonenum} onChange={(e) => setPhonenum(e.target.value)} placeholder="휴대전화" />
       <br />
       <br />
       <button type="button" onClick={handleClick}>
@@ -156,14 +132,9 @@ function Regi() {
       <br />
       <br />
       <form name="frm" onSubmit={account} encType="multipart/form-data">
-        <input
-          type="file"
-          onChange={imageLoad}
-          ref={imgRef}
-          name="uploadFile"
-        />
+        <input type="file" onChange={imageLoad} ref={imgRef} name="uploadFile" />
         &nbsp;
-        <img src={profile} alt="" />
+        <img src={profile} alt="" style={{ width: "100px" }} />
         <br />
         <br />
         <button type="submit" onClick={account}>

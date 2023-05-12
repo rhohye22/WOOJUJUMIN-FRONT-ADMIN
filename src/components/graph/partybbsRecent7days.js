@@ -39,7 +39,7 @@ function PartybbsRecent7days() {
         <XAxis dataKey="wdate" />
         <YAxis />
         <Tooltip />
-        <Area type="monotone" dataKey="count" stroke="#8884d8" fill="#8884d8" />
+        <Area type="monotone" dataKey="count" stroke="#E97777" fill="#E97777" />
       </AreaChart>
       <p>최근 7일간 모집게시판 등록건수</p>
     </div>
