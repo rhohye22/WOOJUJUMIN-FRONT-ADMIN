@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-
+import Button from 'react-bootstrap/Button';
 
 function Calendardetail() {
 
@@ -66,7 +66,7 @@ function Calendardetail() {
             axios.get("http://localhost:3000/calendardelete", {params:{"calSeq":calSeq}})
             .then(function(res){
                 if(res.data==="YES"){
-                    history("/calendar");
+                    history(`/calendar/${calYear}/${calMonth}/${calYear+""+calMonth}`);
                 }
             })
             .catch(function(err){
@@ -76,6 +76,11 @@ function Calendardetail() {
         else {
             
         }
+    }
+
+    // 일정 목록으로 이동
+    function backCal() {
+        history(`/calendar/${calYear}/${calMonth}/${calYear+""+calMonth}`);
     }
 
     function Caldetail() {
@@ -90,7 +95,7 @@ function Calendardetail() {
                         <th>일정</th><td>{calYear}-{calMonth}-{calDay} {calTime}:{calTimeSec}</td>
                     </tr>
                     <tr>
-                        <th>내용</th><td>{calinform.content}</td>
+                        <th style={{height:"430px"}}>내용</th><td>{calinform.content}</td>
                     </tr>
                 </tbody>
             </table>
@@ -99,10 +104,13 @@ function Calendardetail() {
 
     return (
         <div>
-            <h2>여기는 일정 상세보기입니다.</h2>
+            <h2>일정 상세보기</h2>
             <Caldetail />
-            <button type="button"><Link to={`/calendarupdate/${calSeq}`}>일정 수정하기</Link></button>
-            <button type="button" onClick={delBtn}>일정 삭제하기</button>
+            <Button variant="primary" type="submit" style={{marginTop:"20px"}}><Link to={`/calendarupdate/${calSeq}`} style={{color:"white"}}>일정 수정</Link></Button>
+            <Button variant="primary" type="submit" style={{marginTop:"20px", marginLeft:"20px"}} onClick={delBtn}>일정 삭제</Button>
+            <Button variant="primary" onClick={backCal} type="submit" style={{marginTop:"20px", marginLeft:"20px"}}>일정 목록</Button>
+            {/* <button type="button"><Link to={`/calendarupdate/${calSeq}`}>일정 수정하기</Link></button> */}
+            {/* <button type="button" onClick={delBtn}>일정 삭제하기</button> */}
         </div>
     )
 }
