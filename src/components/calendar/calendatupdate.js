@@ -145,7 +145,7 @@ function Calendarupdate() {
 
     return (
         <div>
-            <h2>일정 수정</h2>
+            <h2 style={{fontWeight:"bold", fontSize:"30px", marginBottom:"30px"}}>일정 수정</h2>
             <table border={1} className="writetable">
                 <tbody>
                     <tr>
@@ -194,8 +194,8 @@ function Calendarupdate() {
                     </tr>
                 </tbody>
             </table>
-            <Button variant="primary" onClick={calupdate} type="submit" style={{ marginTop: "20px", marginLeft: "20px" }}>일정 수정</Button>
-            <Button variant="primary" onClick={backCal} type="submit" style={{ marginTop: "20px", marginLeft: "20px" }}>일정목록</Button>
+            <Button variant="primary" className="adminBtn" onClick={calupdate} type="submit" style={{ marginTop: "20px", marginLeft: "20px" }}>일정 수정</Button>
+            <Button variant="primary" className="adminBtn" onClick={backCal} type="submit" style={{ marginTop: "20px", marginLeft: "20px" }}>일정목록</Button>
             {/* <button type="button" onClick={calupdate}>일정 수정하기</button> */}
         </div>
     )

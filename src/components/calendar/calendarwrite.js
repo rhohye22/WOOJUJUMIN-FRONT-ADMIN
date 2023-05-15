@@ -146,7 +146,7 @@ function Calendarwrite() {
 
     return (
         <div>
-            <h2>일정 등록</h2>
+            <h2 style={{fontWeight:"bold", fontSize:"30px", marginBottom:"30px"}}>일정 등록</h2>
             <table border="1" className="writetable">
                 <tbody>
                     <tr>
@@ -195,8 +195,8 @@ function Calendarwrite() {
                     </tr>
                 </tbody>
             </table>
-            <Button variant="primary" onClick={calwrite} type="submit" style={{marginTop:"20px"}}>일정등록</Button>
-            <Button variant="primary" onClick={backCal} type="submit" style={{marginTop:"20px", marginLeft:"20px"}}>일정목록</Button>
+            <Button variant="primary" className="adminBtn" onClick={calwrite} type="submit" style={{marginTop:"20px"}}>일정등록</Button>
+            <Button variant="primary" className="adminBtn" onClick={backCal} type="submit" style={{marginTop:"20px", marginLeft:"20px"}}>일정목록</Button>
             {/* <button onClick={calwrite}>일정 등록하기</button> */}
             {/* <button onClick={backCal}>일정 목록이동</button> */}
         </div>
