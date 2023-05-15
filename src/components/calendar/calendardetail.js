@@ -82,11 +82,19 @@ function Calendardetail() {
     function backCal() {
         history(`/calendar/${calYear}/${calMonth}/${calYear+""+calMonth}`);
     }
+    
+    function calupdatemove(){
+        history(`/calendarupdate/${calSeq}`);
+    }
+
+    function callistmove(){
+        history(`/calendarlist/${calYear}${calMonth}${calDay}`);
+    }
 
     function Caldetail() {
 
         return (
-            <table border={1}>
+            <table border={1} className="detailTable">
                 <tbody>
                     <tr>
                         <th>{calinform.tagName}</th><td>{calinform.title}</td>
@@ -104,11 +112,12 @@ function Calendardetail() {
 
     return (
         <div>
-            <h2>일정 상세보기</h2>
+            <h2 style={{fontWeight:"bold", fontSize:"30px", marginBottom:"30px"}}>일정 상세보기</h2>
             <Caldetail />
-            <Button variant="primary" type="submit" style={{marginTop:"20px"}}><Link to={`/calendarupdate/${calSeq}`} style={{color:"white"}}>일정 수정</Link></Button>
-            <Button variant="primary" type="submit" style={{marginTop:"20px", marginLeft:"20px"}} onClick={delBtn}>일정 삭제</Button>
-            <Button variant="primary" onClick={backCal} type="submit" style={{marginTop:"20px", marginLeft:"20px"}}>일정 목록</Button>
+            <Button variant="primary" className="adminBtn" style={{marginTop:"40px"}} onClick={calupdatemove}>일정 수정</Button>
+            <Button variant="primary" className="adminBtn" type="submit" style={{marginTop:"40px", marginLeft:"20px"}} onClick={delBtn}>일정 삭제</Button>
+            <Button variant="primary" className="adminBtn" onClick={callistmove} type="submit" style={{marginTop:"40px", marginLeft:"20px"}}>일정 목록</Button>
+            <Button variant="primary" className="adminBtn" onClick={backCal} type="submit" style={{marginTop:"40px", marginLeft:"20px"}}>달력으로 돌아가기</Button>
             {/* <button type="button"><Link to={`/calendarupdate/${calSeq}`}>일정 수정하기</Link></button> */}
             {/* <button type="button" onClick={delBtn}>일정 삭제하기</button> */}
         </div>

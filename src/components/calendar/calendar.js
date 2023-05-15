@@ -351,7 +351,6 @@ function Calendar() {
 
   return (
     <div style={{ width: "1400px", margin: "0 auto" }}>
-      <h3>일정 등록</h3>
       <div>
         <Table responsive className="finalCal">
           <colgroup>

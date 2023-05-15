@@ -127,9 +127,10 @@ a{
 .tagCss{
   /* border: 1px solid red; */
   border-radius: 4px;
-  padding: 3px;
-  background-color: #404f49;
+  padding: 5px;
+  background-color: #171c4b;
   color: white;
+  font-weight: bold;
 }
 .numTop{
   vertical-align: top;
