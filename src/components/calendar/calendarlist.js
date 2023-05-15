@@ -11,11 +11,9 @@ function CalendarList() {
     console.log(rdate);
     const [daylist, setDaylist] = useState([]);
 
-    // 나중에 로그인한 아이디 가져가게 코드 수정 
-    const id = "admin";
-    localStorage.setItem("login", id);
-
-    const storedId = localStorage.getItem("login");
+    // 나중에 로그인한 아이디 가져가게 코드 수정 - 0515 수정
+    const isLogin = JSON.parse(localStorage.getItem("login"));
+    const storedId = isLogin.id;
 
     useEffect(function () {
         async function fetchData() {
@@ -43,8 +41,8 @@ function CalendarList() {
     }
     return (
         <div>
-            <h2>여기는 일정리스트 보기!</h2>
-            <table border={1}>
+            <h2 style={{fontWeight:"bold", fontSize:"30px", marginBottom:"40px"}}>{rdate.substring(0,4)}년 {rdate.substring(4,6)}월 {rdate.substring(6,8)}일 일정 전체보기 </h2>
+            <table border={1} className="listTable">
                 <colgroup>
                     <col width={100} />
                     <col width={400} />
@@ -68,7 +66,7 @@ function CalendarList() {
                     }
                 </tbody>
             </table>
-            <Button variant="primary"  onClick={calendarlist} type="submit" style={{marginTop:"20px", marginLeft:"20px"}}>일정목록</Button>
+            <Button variant="primary" className="adminBtn" onClick={calendarlist} type="submit" style={{marginTop:"20px", marginLeft:"20px"}}>달력으로 돌아가기</Button>
             {/* <button type="button" onClick={calendarlist}>일정 돌아가기</button> */}
         </div>
     )
