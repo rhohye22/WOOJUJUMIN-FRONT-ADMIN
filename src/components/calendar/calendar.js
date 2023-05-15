@@ -46,7 +46,7 @@ function Calendar() {
   useEffect(() => {
     const fetchData = async (sendYear, sendMonth) => {
       await axios
-        .post("http://localhost:3000/calendarmain", null, { params: { sendYear: sendYear, sendMonth: sendMonth, sendYyyymm: sendyyyymm } })
+        .post("http://118.67.132.98:3000/calendarmain", null, { params: { sendYear: sendYear, sendMonth: sendMonth, sendYyyymm: sendyyyymm } })
         .then(function (res) {
           // alert(res.data);
           console.log(JSON.stringify(res.data));
@@ -75,7 +75,7 @@ function Calendar() {
     // async function cntData(){      
     //   for (let i = 1; i <= lastday; i++) {
     //     let ymd = year + charTwo(month) + charTwo(i);
-    //     await axios.get("http://localhost:3000/listcount", { params: { "rdate": ymd } })
+    //     await axios.get("http://118.67.132.98:3000/listcount", { params: { "rdate": ymd } })
     //       .then(function (res) {
     //         console.log(res.data);
     //         listcnt.push(res.data);
@@ -90,7 +90,7 @@ function Calendar() {
     //   try {
     //     for (let i = 1; i <= lastday; i++) {
     //       let ymd = year + charTwo(month) + charTwo(i);
-    //       const response = await axios.get("http://localhost:3000/listcount", {
+    //       const response = await axios.get("http://118.67.132.98:3000/listcount", {
     //         params: { rdate: ymd },
     //       });
     //       console.log(response.data);
@@ -114,7 +114,7 @@ function Calendar() {
         const updatedListcnt = []; // 업데이트된 배열을 임시로 저장할 변수
         for (let i = 1; i <= lastday; i++) {
           let ymd = year + charTwo(month) + charTwo(i);
-          const response = await axios.get("http://localhost:3000/listcount", { params: { rdate: ymd } });
+          const response = await axios.get("http://118.67.132.98:3000/listcount", { params: { rdate: ymd } });
           console.log(response.data);
           updatedListcnt.push(response.data);
         }
@@ -142,7 +142,7 @@ function Calendar() {
 
   // useEffect(()=>{
   //   const listcount = async ()=>{
-  //     await axios.get("http://localhost:3000/listcount", {params:{"rdate":yyyymmdd}})
+  //     await axios.get("http://118.67.132.98:3000/listcount", {params:{"rdate":yyyymmdd}})
   //     .then(function(res){
   //       alert("확인");
   //     })

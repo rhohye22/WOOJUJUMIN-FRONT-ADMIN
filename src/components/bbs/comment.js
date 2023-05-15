@@ -29,7 +29,7 @@ function Comment() {
       return;
     }
     axios
-      .get("http://localhost:3000/allSpamWord")
+      .get("http://118.67.132.98:3000/allSpamWord")
       .then(function (resp) {
         setSpamlist(resp.data);
       })
@@ -47,7 +47,7 @@ function Comment() {
       return;
     }
     axios
-      .post("http://localhost:3000/addSpamword", null, {
+      .post("http://118.67.132.98:3000/addSpamword", null, {
         params: { word: word },
       })
       .then((resp) => {
@@ -74,7 +74,7 @@ function Comment() {
   //단어 삭제
   function deletSpamword(delword) {
     axios
-      .post("http://localhost:3000/deleteSpamword", null, {
+      .post("http://118.67.132.98:3000/deleteSpamword", null, {
         params: { word: delword },
       })
       .then((resp) => {
@@ -106,7 +106,7 @@ function Comment() {
 
   function getSpamBbslist() {
     axios
-      .get("http://localhost:3000/freeBbsSpamReply")
+      .get("http://118.67.132.98:3000/freeBbsSpamReply")
       .then(function (resp) {
         setSpambbslist(resp.data);
       })
@@ -127,7 +127,7 @@ function Comment() {
 
   function getSpamPartylist() {
     axios
-      .get("http://localhost:3000/partyBbsSpamReply")
+      .get("http://118.67.132.98:3000/partyBbsSpamReply")
       .then(function (resp) {
         setSpampartylist(resp.data);
       })

@@ -38,7 +38,7 @@ function Ansqna() {
       return;
     }
     axios
-      .get("http://localhost:3000/answeredqns")
+      .get("http://118.67.132.98:3000/answeredqns")
       .then(function (resp) {
         console.log(resp.data);
         setQnalist(resp.data);

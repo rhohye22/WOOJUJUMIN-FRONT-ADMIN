@@ -110,7 +110,7 @@ function Calendarwrite() {
         }
 
 
-        axios.get("http://localhost:3000/calendarwrite", { params: { "manager": storedId, "title": title, "content": content, "rdate": final, "tag": tag } })
+        axios.get("http://118.67.132.98:3000/calendarwrite", { params: { "manager": storedId, "title": title, "content": content, "rdate": final, "tag": tag } })
             .then(function (res) {
                 // alert(res.data);
                 if (res.data === "YES") {

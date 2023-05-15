@@ -46,7 +46,7 @@ function Calendarupdate() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.post("http://localhost:3000/calendardetail", null, { params: { "calSeq": calSeq } });
+                const response = await axios.post("http://118.67.132.98:3000/calendardetail", null, { params: { "calSeq": calSeq } });
                 if (response.data) { // 데이터가 유효한 경우에만 setCalinform 호출
                     console.log(response.data);
                     setCalinform(response.data);
@@ -107,7 +107,7 @@ function Calendarupdate() {
         //     setFinal(reserDate);
         // }
 
-        axios.get("http://localhost:3000/calendarupdate", { params: { "calSeq": calSeq, "manager": storedId, "tag": tag, "title": title, "content": content, "rdate": final } })
+        axios.get("http://118.67.132.98:3000/calendarupdate", { params: { "calSeq": calSeq, "manager": storedId, "tag": tag, "title": title, "content": content, "rdate": final } })
             .then(function (res) {
                 // alert(res.data);
                 if (res.data === "YES") {

@@ -33,7 +33,7 @@ function AllQna() {
       return;
     }
     axios
-      .get("http://localhost:3000/allnewqna")
+      .get("http://118.67.132.98:3000/allnewqna")
       .then(function (resp) {
         console.log(resp.data);
         setQnalist(resp.data);

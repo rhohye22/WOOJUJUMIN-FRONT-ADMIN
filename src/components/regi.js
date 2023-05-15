@@ -61,7 +61,7 @@ function Regi() {
 
   const idCheck = async () => {
     await axios
-      .post("http://localhost:3000/idcheck", null, { params: { id: id } })
+      .post("http://118.67.132.98:3000/idcheck", null, { params: { id: id } })
       .then(function (res) {
         if (res.data === "YES") {
           alert("사용가능한 아이디입니다.");
@@ -89,7 +89,7 @@ function Regi() {
 
     // let member = { "id":id, "password":password, "nickname":nickname, "email":email, "phoneNum":phonenum, "address":address, "uploadFile":formData };
     axios
-      .post("http://localhost:3000/adminAddmember", formData)
+      .post("http://118.67.132.98:3000/adminAddmember", formData)
       .then(function (resp) {
         if (resp.data === "YES") {
           alert("정상적으로 가입되었습니다.");

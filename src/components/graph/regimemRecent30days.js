@@ -7,7 +7,7 @@ function RegimemRecent30days() {
 
   function cntByDays() {
     axios
-      .get("http://localhost:3000/cntRegiMemDays")
+      .get("http://118.67.132.98:3000/cntRegiMemDays")
       .then(function (resp) {
         console.log(resp.data);
         setList(resp.data);

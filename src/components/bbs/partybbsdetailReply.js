@@ -18,7 +18,7 @@ function PartybbsdetailReply() {
   let partySeq = params.partySeq;
 
   const qnaData = async (partySeq) => {
-    const response = await axios.get("http://localhost:3000/getPartyBbsAdmin", {
+    const response = await axios.get("http://118.67.132.98:3000/getPartyBbsAdmin", {
       params: { partySeq: partySeq },
     });
     setFreeBbs(response.data);
@@ -33,7 +33,7 @@ function PartybbsdetailReply() {
     return <div>Loading...</div>;
   }
 
-  const imageUrl = freebbs.image !== null ? `http://localhost:3000/upload/partybbs/${freebbs.image}` : null;
+  const imageUrl = freebbs.image !== null ? `http://118.67.132.98:3000/upload/partybbs/${freebbs.image}` : null;
 
   return (
     <div>

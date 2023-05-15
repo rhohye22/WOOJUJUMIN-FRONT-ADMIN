@@ -17,7 +17,7 @@ function FreeBbsDetail() {
   let bbsSeq = params.bbsSeq;
 
   const qnaData = async (bbsSeq) => {
-    const response = await axios.get("http://localhost:3000/getfreeBbs", {
+    const response = await axios.get("http://118.67.132.98:3000/getfreeBbs", {
       params: { bbsSeq: bbsSeq },
     });
     setFreeBbs(response.data);
@@ -32,12 +32,12 @@ function FreeBbsDetail() {
     return <div>Loading...</div>;
   }
 
-  const imageUrl = freebbs.image !== null ? `http://localhost:3000/upload/freebbs/${freebbs.image}` : null;
+  const imageUrl = freebbs.image !== null ? `http://118.67.132.98:3000/upload/freebbs/${freebbs.image}` : null;
 
   //숨기기
   function delfreebbs() {
     axios
-      .post("http://localhost:3000/delFreebbsByAdmin", null, {
+      .post("http://118.67.132.98:3000/delFreebbsByAdmin", null, {
         params: { bbsSeq: bbsSeq },
       })
       .then((resp) => {
@@ -55,7 +55,7 @@ function FreeBbsDetail() {
   //노출하기
   function reopenFreebbs() {
     axios
-      .post("http://localhost:3000/reopenFreebbsByAdmin", null, {
+      .post("http://118.67.132.98:3000/reopenFreebbsByAdmin", null, {
         params: { bbsSeq: bbsSeq },
       })
       .then((resp) => {

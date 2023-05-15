@@ -27,7 +27,7 @@ function Login() {
 
   function login() {
     axios
-      .post("http://localhost:3000/adminLogin", null, {
+      .post("http://118.67.132.98:3000/adminLogin", null, {
         params: { id: id, password: pwd },
       })
       .then(function (resp) {

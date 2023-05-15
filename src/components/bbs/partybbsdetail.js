@@ -18,7 +18,7 @@ function PartyBbsDetail() {
   let partySeq = params.partySeq;
 
   const qnaData = async (partySeq) => {
-    const response = await axios.get("http://localhost:3000/getPartyBbsAdmin", {
+    const response = await axios.get("http://118.67.132.98:3000/getPartyBbsAdmin", {
       params: { partySeq: partySeq },
     });
     setFreeBbs(response.data);
@@ -33,12 +33,12 @@ function PartyBbsDetail() {
     return <div>Loading...</div>;
   }
 
-  const imageUrl = freebbs.image !== null ? `http://localhost:3000/upload/partybbs/${freebbs.image}` : null;
+  const imageUrl = freebbs.image !== null ? `http://118.67.132.98:3000/upload/partybbs/${freebbs.image}` : null;
 
   //숨기기
   function delPartybbs() {
     axios
-      .post("http://localhost:3000/delPartybbsByAdmin", null, {
+      .post("http://118.67.132.98:3000/delPartybbsByAdmin", null, {
         params: { partySeq: partySeq },
       })
       .then((resp) => {
@@ -56,7 +56,7 @@ function PartyBbsDetail() {
   //노출하기
   function reopenPartybbs() {
     axios
-      .post("http://localhost:3000/reopenPartybbsByAdmin", null, {
+      .post("http://118.67.132.98:3000/reopenPartybbsByAdmin", null, {
         params: { partySeq: partySeq },
       })
       .then((resp) => {

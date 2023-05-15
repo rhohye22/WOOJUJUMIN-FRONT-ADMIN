@@ -42,7 +42,7 @@ function Partybbs() {
 
   function PartyBbslistAdmin() {
     axios
-      .get("http://localhost:3000/PartyBbslistAdmin", {
+      .get("http://118.67.132.98:3000/PartyBbslistAdmin", {
         params: { choice: choice, search: search, start: start, tag: tag },
       })
       .then(function (resp) {
@@ -55,7 +55,7 @@ function Partybbs() {
 
   function cntPartyBbsAdmin() {
     axios
-      .get("http://localhost:3000/cntPartyBbsAdmin", {
+      .get("http://118.67.132.98:3000/cntPartyBbsAdmin", {
         params: {
           choice: choice,
           search: search,
@@ -183,7 +183,7 @@ function Partybbs() {
                       >
                         {free.image !== null ? (
                           <img
-                            src={`http://localhost:3000/upload/freebbs/${free.image}`}
+                            src={`http://118.67.132.98:3000/upload/freebbs/${free.image}`}
                             alt="free image"
                             style={{
                               width: 40,

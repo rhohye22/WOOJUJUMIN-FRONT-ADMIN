@@ -36,7 +36,7 @@ function Typeqna(props) {
       return;
     }
     axios
-      .get("http://localhost:3000/typeqna", {
+      .get("http://118.67.132.98:3000/typeqna", {
         params: { qtype: qtype },
       })
       .then(function (resp) {
