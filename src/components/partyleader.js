@@ -35,7 +35,7 @@ function Partyleader() {
     useEffect(() => {
 
         const fetchData = async () => {
-            await axios.post("http://localhost:3000/partycheck", null, { params: {} })
+            await axios.post("http://118.67.132.98:3000/partycheck", null, { params: {} })
                 .then(function (res) {
                     // console.log(JSON.stringify(res.data));
                     setChecklist(res.data);
@@ -69,7 +69,7 @@ function Partyleader() {
             console.log(`Button in row ${rowIndex} clicked!`);
             // alert("?");
 
-            axios.post("http://localhost:3000/partyleadersuccess", null, { params: { "memid": memid } })
+            axios.post("http://118.67.132.98:3000/partyleadersuccess", null, { params: { "memid": memid } })
                 .then(function (res) {
                     if (res.data === "YES") {
                         alert("파티장으로 수락했습니다.");
@@ -87,7 +87,7 @@ function Partyleader() {
             console.log(`Button in row ${rowIndex} clicked!`);
             // alert("?");
 
-            axios.post("http://localhost:3000/partyleaderreject", null, { params: { "memid": memid } })
+            axios.post("http://118.67.132.98:3000/partyleaderreject", null, { params: { "memid": memid } })
                 .then(function (res) {
                     if (res.data) {
                         alert("파티장 신청을 거절했습니다.");

@@ -55,7 +55,7 @@ function App() {
             {log ? null : (
               <div>
                 <span className="ml-2">관리자 ID : {login.id}</span>&nbsp;&nbsp;
-                <img src={`http://localhost:3000/upload/member/${profile}`} style={{ width: "30px", height: "30px", borderRadius: "50%" }} />
+                <img src={`http://118.67.132.98:3000/upload/member/${profile}`} style={{ width: "30px", height: "30px", borderRadius: "50%" }} />
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <Button variant="outline-dark" size="sm" onClick={loghandle}>
                   로그아웃

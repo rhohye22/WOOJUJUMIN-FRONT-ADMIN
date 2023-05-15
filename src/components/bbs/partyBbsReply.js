@@ -22,7 +22,7 @@ function PartyBbsReply() {
 
   function getReplylist() {
     axios
-      .get("http://localhost:3000/partyReplyListAdmin", {
+      .get("http://118.67.132.98:3000/partyReplyListAdmin", {
         params: { replySeq: replySeq, start: start, limit: limit },
       })
       .then(function (resp) {
@@ -44,7 +44,7 @@ function PartyBbsReply() {
   //숨김처리
   function delreply(del) {
     axios
-      .post("http://localhost:3000/statePartyReplyControl", null, {
+      .post("http://118.67.132.98:3000/statePartyReplyControl", null, {
         params: { replySeq: replySeq, seq: seq, del: del },
       })
       .then((resp) => {

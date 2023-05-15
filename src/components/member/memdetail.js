@@ -14,7 +14,7 @@ function MemDetail() {
 
   function memData() {
     axios
-      .get("http://localhost:3000/getMemeberInfo", {
+      .get("http://118.67.132.98:3000/getMemeberInfo", {
         params: {
           memberSeq: memberSeq,
         },
@@ -30,7 +30,7 @@ function MemDetail() {
   //상태변경
   function stateControl(auth) {
     axios
-      .post("http://localhost:3000/stateControl", null, {
+      .post("http://118.67.132.98:3000/stateControl", null, {
         params: { memberSeq: memberSeq, auth: auth },
       })
       .then((resp) => {
@@ -57,7 +57,7 @@ function MemDetail() {
     memData();
   }, [params.memberSeq]);
 
-  const imageUrl = memberdata.profile !== null ? `http://localhost:3000/upload/member/${memberdata.profile}` : null;
+  const imageUrl = memberdata.profile !== null ? `http://118.67.132.98:3000/upload/member/${memberdata.profile}` : null;
 
   return (
     <div>

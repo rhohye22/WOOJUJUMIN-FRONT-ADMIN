@@ -17,7 +17,7 @@ function CalendarList() {
 
     useEffect(function () {
         async function fetchData() {
-            await axios.get("http://localhost:3000/calendarlist", { params: { "rdate": rdate, "manager": storedId } })
+            await axios.get("http://118.67.132.98:3000/calendarlist", { params: { "rdate": rdate, "manager": storedId } })
                 .then(function (res) {
                     // alert(JSON.stringify(res.data));
                     // alert(JSON.stringify(res.data[0]));

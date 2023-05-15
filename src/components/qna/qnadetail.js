@@ -31,7 +31,7 @@ function Qnadetail() {
   }, [navigate, isLogin]);
 
   const qnaData = async (qnaSeq) => {
-    const response = await axios.get("http://localhost:3000/getQna", {
+    const response = await axios.get("http://118.67.132.98:3000/getQna", {
       params: { qnaSeq: qnaSeq },
     });
     setQna(response.data);
@@ -53,7 +53,7 @@ function Qnadetail() {
       return;
     }
     axios
-      .post("http://localhost:3000/makeanswer", null, {
+      .post("http://118.67.132.98:3000/makeanswer", null, {
         params: { qnaSeq: qnaSeq, mngid: id, answer: answer },
       })
       .then((resp) => {

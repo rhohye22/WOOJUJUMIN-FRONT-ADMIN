@@ -10,7 +10,7 @@ function Manager(props) {
 
   function getFreelist() {
     axios
-      .get("http://localhost:3000/getMemlistByAuth", {
+      .get("http://118.67.132.98:3000/getMemlistByAuth", {
         params: { auth: auth },
       })
       .then(function (resp) {
@@ -59,7 +59,7 @@ function Manager(props) {
                       >
                         {mem.profile !== null ? (
                           <img
-                            src={`http://localhost:3000/upload/member/${mem.profile}`}
+                            src={`http://118.67.132.98:3000/upload/member/${mem.profile}`}
                             alt="free image"
                             style={{
                               width: 40,

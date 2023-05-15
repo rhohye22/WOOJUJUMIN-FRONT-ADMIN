@@ -48,7 +48,7 @@ function Partyrequest() {
         let formdata = new FormData();
         formdata.append("uploadFile", document.frm.uploadFile.files[0]);
 
-        axios.post("http://localhost:3000/partyrequest", formdata)
+        axios.post("http://118.67.132.98:3000/partyrequest", formdata)
             .then(function (resp) {
                 // console.log(JSON.stringify(resp.data));
                 // console.log('file upload에 성공했습니다');
@@ -98,7 +98,7 @@ function Partyrequest() {
 
         console.log(cardData);
 
-        axios.post("http://localhost:3000/partyleader", cardData)
+        axios.post("http://118.67.132.98:3000/partyleader", cardData)
             .then(function (res) {
                 // alert(res.data);
                 if (res.data === "YES") {

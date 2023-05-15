@@ -7,7 +7,7 @@ function PartybbsRecent7days() {
 
   function cntByDays() {
     axios
-      .get("http://localhost:3000/cntFbsDays")
+      .get("http://118.67.132.98:3000/cntFbsDays")
       .then(function (resp) {
         console.log(resp.data);
         setList(resp.data);
