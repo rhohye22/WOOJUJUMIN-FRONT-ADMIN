@@ -57,7 +57,7 @@ function MemDetail() {
     memData();
   }, [params.memberSeq]);
 
-  const imageUrl = memberdata.profile !== null ? `http://118.67.132.98:3000/upload/member/${memberdata.profile}` : null;
+  //const imageUrl = memberdata.profile !== null ? `http://118.67.132.98:3000/upload/member/${memberdata.profile}` : null;
 
   return (
     <div>
@@ -84,9 +84,9 @@ function MemDetail() {
           <tr>
             <td colSpan={3}>
               <br /> <br />
-              {imageUrl !== null ? (
+              {memberdata.imageurl && memberdata.imageurl !== "" && memberdata.imageurl !== "null" ? (
                 <img
-                  src={imageUrl}
+                  src={memberdata.imageurl}
                   alt="no image"
                   style={{
                     width: "100%",

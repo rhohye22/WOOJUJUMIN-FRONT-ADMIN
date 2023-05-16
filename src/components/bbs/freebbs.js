@@ -173,9 +173,9 @@ function Freebbs() {
                           alignItems: "center",
                         }}
                       >
-                        {free.image !== null ? (
+                        {free.imageurl && free.imageurl !== "" && free.imageurl !== "null" ? (
                           <img
-                            src={`http://118.67.132.98:3000/upload/freebbs/${free.image}`}
+                            src={free.imageurl}
                             alt="free image"
                             style={{
                               width: 40,

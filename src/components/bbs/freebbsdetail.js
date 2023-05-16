@@ -32,7 +32,7 @@ function FreeBbsDetail() {
     return <div>Loading...</div>;
   }
 
-  const imageUrl = freebbs.image !== null ? `http://118.67.132.98:3000/upload/freebbs/${freebbs.image}` : null;
+  //const imageUrl = freebbs.imageurl !== null ? freebbs.imageurl : null;
 
   //숨기기
   function delfreebbs() {
@@ -93,9 +93,9 @@ function FreeBbsDetail() {
           <tr>
             <td colSpan={4}>
               <br /> <br />
-              {imageUrl !== null ? (
+              {free.imageurl && free.imageurl !== "" && free.imageurl !== "null" ? (
                 <img
-                  src={imageUrl}
+                  src={free.imageurl}
                   alt="no image"
                   style={{
                     width: 500,

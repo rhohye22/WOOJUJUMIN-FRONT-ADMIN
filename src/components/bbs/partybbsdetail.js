@@ -95,9 +95,9 @@ function PartyBbsDetail() {
           <tr>
             <td colSpan={4}>
               <br /> <br />
-              {imageUrl !== null ? (
+              {freebbs.imageurl && freebbs.imageurl !== "" && freebbs.imageurl !== "null" ? (
                 <img
-                  src={imageUrl}
+                  src={freebbs.imageurl}
                   alt="no image"
                   style={{
                     width: 500,
