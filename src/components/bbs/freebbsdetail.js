@@ -93,9 +93,9 @@ function FreeBbsDetail() {
           <tr>
             <td colSpan={4}>
               <br /> <br />
-              {free.imageurl && free.imageurl !== "" && free.imageurl !== "null" ? (
+              {freebbs.imageurl && freebbs.imageurl !== "" && freebbs.imageurl !== "null" ? (
                 <img
-                  src={free.imageurl}
+                  src={freebbs.imageurl}
                   alt="no image"
                   style={{
                     width: 500,
