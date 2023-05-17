@@ -68,7 +68,7 @@ function AllQna() {
                 return (
                   <tr key={i}>
                     <td align="left">
-                      {qna.ansdate ? <span>[답변완료] </span> : <span>[답변대기중] </span>}
+                      {qna.answer ? <span>[답변완료] </span> : <span>[답변대기중] </span>}
                       {qna.title}
                     </td>
                     <td>{qna.wdate.substring(0, 10)}</td>
