@@ -40,8 +40,8 @@ function Qnadetail() {
   };
 
   useEffect(() => {
-    qnaData(qnaSeq);
-  }, [qnaSeq]);
+    qnaData(params.qnaSeq);
+  }, [params.qnaSeq]);
 
   if (loading === false) {
     return <div>Loading...</div>;

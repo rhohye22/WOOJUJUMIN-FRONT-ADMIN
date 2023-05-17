@@ -48,11 +48,8 @@ function Typeqna(props) {
       });
   }
   useEffect(() => {
-    if (id && qtype) {
-      // id와 qtype이 모두 있어야만 실행
-      typeQnalist(qtype);
-    }
-  }, [id, qtype]);
+    typeQnalist(qtype);
+  }, [props.qtype]);
   return (
     <>
       <div className="qnapageLeft">

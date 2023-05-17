@@ -12,10 +12,6 @@ function Qnapage() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  function handleNavigation(route) {
-    navigate(route);
-  }
-
   return (
     <div className="qnapage">
       <div className="qnanav" style={{ textAlign: "left" }}>

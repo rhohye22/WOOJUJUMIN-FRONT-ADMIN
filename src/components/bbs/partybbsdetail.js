@@ -8,7 +8,7 @@ import Button from "react-bootstrap/Button";
 function PartyBbsDetail() {
   let navigate = useNavigate();
 
-  const [freebbs, setFreeBbs] = useState({});
+  const [freebbs, setFreeBbs] = useState([]);
   const [loading, setLoading] = useState(false);
 
   //댓글
@@ -33,7 +33,7 @@ function PartyBbsDetail() {
     return <div>Loading...</div>;
   }
 
-  const imageUrl = freebbs.image !== null ? `http://118.67.132.98:3000/upload/partybbs/${freebbs.image}` : null;
+  //const imageUrl = freebbs.image !== null ? `http://118.67.132.98:3000/upload/partybbs/${freebbs.image}` : null;
 
   //숨기기
   function delPartybbs() {
