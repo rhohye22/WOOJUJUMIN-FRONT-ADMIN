@@ -131,7 +131,7 @@ function Calendarwrite() {
     const handleDateChange = (date) => {
         setTest(date);
 
-        // alert(date);
+        alert(date);
         const year = date.getFullYear().toString();
         const month = (date.getMonth() + 1).toString().padStart(2, "0");
         const day = date.getDate().toString().padStart(2, "0");
@@ -139,14 +139,24 @@ function Calendarwrite() {
         const minute = date.getMinutes().toString().padStart(2, "0");
 
         chrdate = year + month + day + hour + minute;
-        // console.log("보내는용도"+chrdate);
+        console.log("보내는용도@@@@"+chrdate);
         setFinal(chrdate);
+
+        alert(chrdate + "chrdate 확인용");
+
+        // const dat = test.getTime();
+        // const formattedTimestamp = new Date(dat)
+        //     .toISOString()
+        //     .slice(0, 19)
+        //     .replace("T", " ");
+        // setFinal(formattedTimestamp);
+        // console.log(formattedTimestamp , "확인용");
     };
 
 
     return (
         <div>
-            <h2 style={{fontWeight:"bold", fontSize:"30px", marginBottom:"30px"}}>일정 등록</h2>
+            <h2 style={{ fontWeight: "bold", fontSize: "30px", marginBottom: "30px" }}>일정 등록</h2>
             <table border="1" className="writetable">
                 <tbody>
                     <tr>
@@ -195,8 +205,8 @@ function Calendarwrite() {
                     </tr>
                 </tbody>
             </table>
-            <Button variant="primary" className="adminBtn" onClick={calwrite} type="submit" style={{marginTop:"20px"}}>일정등록</Button>
-            <Button variant="primary" className="adminBtn" onClick={backCal} type="submit" style={{marginTop:"20px", marginLeft:"20px"}}>일정목록</Button>
+            <Button variant="primary" className="adminBtn" onClick={calwrite} type="submit" style={{ marginTop: "20px" }}>일정등록</Button>
+            <Button variant="primary" className="adminBtn" onClick={backCal} type="submit" style={{ marginTop: "20px", marginLeft: "20px" }}>일정목록</Button>
             {/* <button onClick={calwrite}>일정 등록하기</button> */}
             {/* <button onClick={backCal}>일정 목록이동</button> */}
         </div>
