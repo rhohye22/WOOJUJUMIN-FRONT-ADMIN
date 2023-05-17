@@ -33,7 +33,7 @@ function PartybbsdetailReply() {
     return <div>Loading...</div>;
   }
 
-  const imageUrl = freebbs.image !== null ? `http://118.67.132.98:3000/upload/partybbs/${freebbs.image}` : null;
+  //const imageUrl = freebbs.image !== null ? `http://118.67.132.98:3000/upload/partybbs/${freebbs.image}` : null;
 
   return (
     <div>
@@ -59,9 +59,9 @@ function PartybbsdetailReply() {
           <tr>
             <td colSpan={4}>
               <br /> <br />
-              {imageUrl !== null ? (
+              {freebbs.imageurl && freebbs.imageurl !== "" && freebbs.imageurl !== "null" ? (
                 <img
-                  src={imageUrl}
+                  src={freebbs.imageurl}
                   alt="no image"
                   style={{
                     width: "80%",

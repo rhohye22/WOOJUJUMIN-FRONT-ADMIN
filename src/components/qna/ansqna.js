@@ -29,14 +29,8 @@ function Ansqna() {
   const ClickHandler = (qnaSeq) => {
     setQnaSeq(qnaSeq); // qnaSeq 상태값 설정
   };
-  //
-  const simpleBarRef = useRef(null);
-  //
 
   function getQnalist() {
-    if (!isLogin) {
-      return;
-    }
     axios
       .get("http://118.67.132.98:3000/answeredqns")
       .then(function (resp) {
@@ -48,13 +42,9 @@ function Ansqna() {
       });
   }
 
-  const [qtype, setQtype] = useState("");
-
   useEffect(() => {
-    if (id) {
-      getQnalist();
-    }
-  }, [id]);
+    getQnalist();
+  }, []);
 
   return (
     <>

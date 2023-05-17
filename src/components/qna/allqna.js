@@ -28,14 +28,11 @@ function AllQna() {
     }
   }, [navigate, isLogin]);
 
-  function getQnalist() {
-    if (!isLogin) {
-      return;
-    }
+  async function getQnalist() {
     axios
       .get("http://118.67.132.98:3000/allnewqna")
       .then(function (resp) {
-        console.log(resp.data);
+        console.log("ㅂㅇㅁ" + JSON.stringify(resp));
         setQnalist(resp.data);
       })
       .catch(function (err) {
@@ -46,10 +43,8 @@ function AllQna() {
   const [qtype, setQtype] = useState("");
 
   useEffect(() => {
-    if (id) {
-      getQnalist();
-    }
-  }, [id]);
+    getQnalist();
+  }, []);
 
   return (
     <>
