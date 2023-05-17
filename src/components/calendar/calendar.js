@@ -306,7 +306,7 @@ function Calendar() {
               </tr>
             </tbody>
           </table>
-        ) : null; // 속성이 false일 경우, null을 반환하여 아무것도 출력하지 않도록 설정
+        ) : null ; // 속성이 false일 경우, null을 반환하여 아무것도 출력하지 않도록 설정
       });
 
       if (listcnt[i - 1] > 5) {

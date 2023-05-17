@@ -187,10 +187,13 @@ td {
   height: 400px;
 }
 .ReactModal__Overlay--after-open{
-  width: 1400px;
+  width: 1300px;
   border: 3px solid #e2e2e2;
-  margin:0 auto;
+  /* margin:0 auto; */
+  margin-left: 17%;
   height: 600px;
+  background-color: #fff !important;
+  inset : 100px !important;
   /* top:300px; */
 }
 .ReactModal__Overlay--after-open button{
@@ -205,8 +208,8 @@ td {
   width: 1200px;
   position: absolute;
   margin: 0 auto;
-  top: 150px;
-  left: 100px;
+  top: 65px;
+  left: 50px;
   height: 400px;
 }
 .modalcss img{
