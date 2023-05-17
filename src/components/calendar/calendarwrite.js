@@ -131,7 +131,7 @@ function Calendarwrite() {
     const handleDateChange = (date) => {
         setTest(date);
 
-        alert(date);
+        // alert(date);
         const year = date.getFullYear().toString();
         const month = (date.getMonth() + 1).toString().padStart(2, "0");
         const day = date.getDate().toString().padStart(2, "0");
@@ -139,10 +139,10 @@ function Calendarwrite() {
         const minute = date.getMinutes().toString().padStart(2, "0");
 
         chrdate = year + month + day + hour + minute;
-        console.log("보내는용도@@@@"+chrdate);
+        // console.log("보내는용도@@@@"+chrdate);
         setFinal(chrdate);
 
-        alert(chrdate + "chrdate 확인용");
+        // alert(chrdate + "chrdate 확인용");
 
         // const dat = test.getTime();
         // const formattedTimestamp = new Date(dat)
