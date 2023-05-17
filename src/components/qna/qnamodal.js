@@ -28,11 +28,7 @@ function Qnamodal(props) {
           <Qnadetail qnaSeq={qnaSeq} />
         </Modal.Body>
         <Modal.Footer>
-          <Button
-            className="btn_close"
-            variant="secondary"
-            onClick={handleClose}
-          >
+          <Button className="btn_close" variant="secondary" onClick={handleClose}>
             닫기
           </Button>
         </Modal.Footer>

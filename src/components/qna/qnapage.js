@@ -35,7 +35,7 @@ function Qnapage() {
           파티관리
         </Link>
         &nbsp;&nbsp;&nbsp;
-        <Link className={` ${location.pathname.includes("errorqna") ? "active" : ""}`} to="commerrorqnaent">
+        <Link className={` ${location.pathname.includes("errorqna") ? "active" : ""}`} to="errorqna">
           오류신고
         </Link>
         &nbsp;&nbsp;&nbsp;
