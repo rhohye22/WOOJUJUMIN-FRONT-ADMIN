@@ -299,7 +299,16 @@ function Calendar() {
               <tr>
                 <td style={{ padding: "5px 5px 5px 0" }}>
                   <Link to={`/calendardetail/${cal.calSeq}`} >
-                    <span className="tagCss" style={{ padding: "5px", fontWeight: "bold" }}>{cal.tagName}</span> {dot3(cal.title)}
+                    {cal.tagName === "농구" && <><span className="tagCss" style={{ padding: "7px", fontWeight: "bold", backgroundColor:"rgb(241, 78, 78)", marginRight:"4px", color:"white"}}>{cal.tagName}</span><span>{dot3(cal.title)}</span></>}
+                    {cal.tagName === "축구" && <><span className="tagCss" style={{ padding: "7px", fontWeight: "bold", backgroundColor:"rgb(220, 149, 41)", marginRight:"4px", color:"white" }}>{cal.tagName}</span><span>{dot3(cal.title)}</span></>}
+                    {cal.tagName === "야구" && <><span className="tagCss" style={{ padding: "7px", fontWeight: "bold", backgroundColor:"rgb(215, 203, 28)", marginRight:"4px", color:"white" }}>{cal.tagName}</span><span>{dot3(cal.title)}</span></>}
+                    {cal.tagName === "예능" && <><span className="tagCss" style={{ padding: "7px", fontWeight: "bold", backgroundColor:"rgb(134, 180, 103)", marginRight:"4px", color:"white" }}>{cal.tagName}</span><span>{dot3(cal.title)}</span></>}
+                    {cal.tagName === "드라마/영화" && <><span className="tagCss" style={{ padding: "7px", fontWeight: "bold", backgroundColor:"rgb(162, 214, 228)", marginRight:"4px", color:"white" }}>{cal.tagName}</span><span>{dot3(cal.title)}</span></>}
+                    {cal.tagName === "게임" && <><span className="tagCss" style={{ padding: "7px", fontWeight: "bold", backgroundColor:"rgb(54, 118, 212)", marginRight:"4px", color:"white" }}>{cal.tagName}</span><span>{dot3(cal.title)}</span></>}
+                    {cal.tagName === "음식" && <><span className="tagCss" style={{ padding: "7px", fontWeight: "bold", backgroundColor:"rgb(31, 31, 226)", marginRight:"4px", color:"white" }}>{cal.tagName}</span><span>{dot3(cal.title)}</span></>}
+                    {cal.tagName === "우주주민 함께" && <><span className="tagCss" style={{ padding: "7px", fontWeight: "bold", backgroundColor:"rgb(110, 31, 226)", marginRight:"4px", color:"white" }}>{cal.tagName}</span><span>{dot3(cal.title)}</span></>}
+                    {cal.tagName === "우주주민 탐사" && <><span className="tagCss" style={{ padding: "7px", fontWeight: "bold", backgroundColor:"rgb(209, 147, 231)", marginRight:"4px", color:"white" }}>{cal.tagName}</span><span>{dot3(cal.title)}</span></>}
+                    {/* <span className="tagCss" style={{ padding: "5px", fontWeight: "bold" }}>{cal.tagName}</span> {dot3(cal.title)} */}
                   </Link>
                   {/* {listcnt[i - 1] > 5 ? <b>:</b> : null} */}
                 </td>
