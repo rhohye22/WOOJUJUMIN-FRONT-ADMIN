@@ -1,70 +1,49 @@
-# Getting Started with Create React App
+# 우주주민 - 테마별 모임 결성 커뮤니티(관리자페이지) 주요기능
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+2023.04.03~2023.05.18 멀티캠퍼스 자바 풀스택 11기 파이널 프로젝트
+### `메인페이지 프론트엔드`
+#### 동일 데이터베이스, 백엔드 공유
+https://github.com/rhohye22/WOOJUJUMIN-FRONT
 
-## Available Scripts
 
-In the project directory, you can run:
+### `백엔드`
+https://github.com/rhohye22/WOOJUJUMIN-BACK
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### `메인페이지`
+![관리자 메인](https://github.com/rhohye22/WOOJUJUMIN-FRONT-ADMIN/assets/76435473/b23abe08-9eae-4359-a9ad-0fca71ea3ad6)
+#### 페이지 이동을 위한 네비바와 실시간 데이터를 반영한 그래프
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+### `파티장승급 수락`
+![승급요청](https://github.com/rhohye22/WOOJUJUMIN-FRONT-ADMIN/assets/76435473/49f0b833-b884-45ba-8956-537aa2b14c35)
+#### 정보보기 클릭시 메인사이트에서 넘어온 신분증 확인가능
+![screencapture-localhost-9002-partyleader-2023-05-18-16_57_54](https://github.com/rhohye22/WOOJUJUMIN-FRONT-ADMIN/assets/76435473/4faebba3-6f58-4b54-be10-f475d1f0ba02)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### `회원관리`
+![화원관리](https://github.com/rhohye22/WOOJUJUMIN-FRONT-ADMIN/assets/76435473/cb565a6d-15d6-4b25-91e3-a99a047abf95)
+#### 회원유형별 권한부여/회수, 활동정지/복구 가능
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### `게시글/댓글 스팸글 모니터링`
+![screencapture-localhost-9002-bbs-management-spam-free-20-2023-05-18-19_09_39](https://github.com/rhohye22/WOOJUJUMIN-FRONT-ADMIN/assets/76435473/14c2ad49-762b-4f2a-9cbc-59b3912725b8)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![screencapture-localhost-9002-bbs-management-comment-free-reply-17-39-2023-05-18-19_10_12](https://github.com/rhohye22/WOOJUJUMIN-FRONT-ADMIN/assets/76435473/dbb03492-9024-4882-8628-47516a74ff92)
+#### 등록해놓은 스팸단어를 포함한 게시글/댓글을 우선적으로 관리자가 확인 및 즉시 조치가능
 
-### `npm run eject`
+### `게시판 직접관리`
+![screencapture-localhost-9002-bbs-management-partybbs-52-2023-05-18-19_14_19](https://github.com/rhohye22/WOOJUJUMIN-FRONT-ADMIN/assets/76435473/3b0a704c-2edf-498f-affa-4fa8e71045c9)
+#### 메인사이트의 동일 노출순서로 열람가능한 탬(자유게시판/모집게시판)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### `답변달기`
+![screencapture-localhost-9002-qna-management-allqna-31-2023-05-18-19_16_48](https://github.com/rhohye22/WOOJUJUMIN-FRONT-ADMIN/assets/76435473/cf6e1794-3885-4533-b34e-a4755fabb104)
+#### 메인사이트의 답변을 문의유형별로 확인가능, 답변등록시 메인사이트에 노출됨
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### `일정등록`
+![screencapture-localhost-9002-calendar-2023-05-202305-2023-05-18-19_20_33](https://github.com/rhohye22/WOOJUJUMIN-FRONT-ADMIN/assets/76435473/42c332b7-8ef5-4c5c-8d7d-ab02cc33df67)
+#### 관리자가 직접 등록한 일정이 메인사이트 하단에서 이용자들이 직접 확인가능
+![메인달력](https://github.com/rhohye22/WOOJUJUMIN-FRONT-ADMIN/assets/76435473/27cd92a4-d3b1-4199-a29b-61dc878a2501)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
